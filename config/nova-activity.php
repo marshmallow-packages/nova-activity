@@ -5,6 +5,10 @@ return [
 
     'quick_replies' => true,
 
+    'comment_validation' => [
+        'type' => 'required',
+    ],
+
     'quick_replies' => [
         'exited' => [
             'name' => 'Exited',

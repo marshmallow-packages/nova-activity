@@ -36,6 +36,11 @@ Route::post('/{resourceName}/{resourceId}', function ($resourceName, $resourceId
 
     try {
 
+        $comment_validation = config('nova-activity.comment_validation');
+        if ($comment_validation && !empty($comment_validation)) {
+            $request->validate($comment_validation);
+        }
+
         $quick_replies = $request->quick_reply ? [
             'user_' . $request->user()->id => $request->quick_reply,
         ] : [];
