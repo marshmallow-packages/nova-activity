@@ -13,6 +13,8 @@ class Activity extends Field
      */
     public $component = 'activity';
 
+    public static $userModel = \App\Models\User::class;
+
     public function __construct(...$params)
     {
         parent::__construct(...$params);

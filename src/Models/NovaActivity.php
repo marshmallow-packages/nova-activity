@@ -3,6 +3,7 @@
 namespace Marshmallow\NovaActivity\Models;
 
 use Illuminate\Support\Arr;
+use Marshmallow\NovaActivity\Activity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -39,7 +40,10 @@ class NovaActivity extends Model
 
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        if (in_array(SoftDeletes::class, class_uses_recursive(Activity::$userModel))) {
+            return $this->belongsTo(Activity::$userModel)->withTrashed();
+        }
+        return $this->belongsTo(Activity::$userModel);
     }
 
     public function novaActivity()
