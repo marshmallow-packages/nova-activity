@@ -26,6 +26,7 @@ return new class extends Migration
             $table->boolean('is_resolved')->default(false);
             $table->json('meta')->nullable()->default(null);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

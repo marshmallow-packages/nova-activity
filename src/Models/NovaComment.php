@@ -4,9 +4,12 @@ namespace Marshmallow\Comments\Models;
 
 use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class NovaComment extends Model
 {
+    use SoftDeletes;
+
     protected $guarded = ['id'];
 
     protected $casts = [
@@ -14,6 +17,17 @@ class NovaComment extends Model
     ];
 
     protected $table = 'nova_commentable';
+
+    public function runAction(string $action)
+    {
+        return match ($action) {
+            'pin' => $this->update(['is_pinned' => true]),
+            'unpin' => $this->update(['is_pinned' => false]),
+            'hide' => $this->update(['is_hidden' => true]),
+            'show' => $this->update(['is_hidden' => false]),
+            'delete' => $this->delete(),
+        };
+    }
 
     public function getOtherQuickReplies($user)
     {

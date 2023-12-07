@@ -8,6 +8,8 @@ trait NovaCommentable
 {
     public function novaComments()
     {
-        return $this->morphMany(NovaComment::class, 'nova_commentable')->orderBy('created_at');
+        return $this->morphMany(NovaComment::class, 'nova_commentable')
+            ->orderBy('is_pinned')
+            ->orderBy('created_at');
     }
 }

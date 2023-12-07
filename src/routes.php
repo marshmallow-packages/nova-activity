@@ -10,7 +10,6 @@ use Marshmallow\Comments\Resources\NovaCommentsCollection;
 Route::get('/{resourceName}/{resourceId}/get-comments', function ($resourceName, $resourceId, Request $request) {
     $resource = Nova::resourceForKey($resourceName);
     $model = $resource::newModel()->findOrFail($resourceId);
-
     return new NovaCommentsCollection(
         $model->novaComments
     );
@@ -23,6 +22,11 @@ Route::post('/{comment_id}/set-quick-reply', function ($comment_id, Request $req
     $comment->update([
         'meta' => $meta,
     ]);
+});
+
+Route::post('/{comment_id}/run-action', function ($comment_id, Request $request) {
+    $comment = NovaComment::find($comment_id);
+    $comment->runAction($request->action);
 });
 
 Route::post('/{resourceName}/{resourceId}', function ($resourceName, $resourceId, Request $request) {

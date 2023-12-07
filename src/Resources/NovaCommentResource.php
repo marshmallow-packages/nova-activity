@@ -24,12 +24,16 @@ class NovaCommentResource extends JsonResource
             ],
             'type' => [
                 'id' => $this->type_key,
-                'label' => $this->type_label,
+                'label' => $this->type_label ?? '',
             ],
             'comment' => nl2br($this->comment),
             'meta' => $this->meta,
             'other_quick_replies' => $this->getOtherQuickReplies($this->user),
             'time_ago' => $this->created_at->diffForHumans(),
+            'is_starred' => $this->is_starred,
+            'is_pinned' => $this->is_pinned,
+            'is_hidden' => $this->is_hidden,
+            'is_resolved' => $this->is_resolved,
         ];
         return parent::toArray($request);
     }

@@ -8,6 +8,7 @@ php artisan vendor:publish --tag="nova-commentable-migrations"
 
 ```php
 ->activityTitle('Activity toch!')
+->activityTitle(null)
 ```
 
 ```php

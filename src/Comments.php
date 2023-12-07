@@ -59,7 +59,7 @@ class Comments extends Field
         ]);
     }
 
-    public function activityTitle(string $title): self
+    public function activityTitle(string|null $title): self
     {
         return $this->withMeta([
             'activity_title' => $title,
