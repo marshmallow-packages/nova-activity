@@ -1,5 +1,5 @@
 {
-    "name": "marshmallow/comments",
+    "name": "marshmallow/nova-activity",
     "description": "A Laravel Nova field.",
     "keywords": [
         "laravel",
@@ -11,13 +11,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Marshmallow\\Comments\\": "src/"
+            "Marshmallow\\NovaActivity\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Marshmallow\\Comments\\FieldServiceProvider"
+                "Marshmallow\\NovaActivity\\FieldServiceProvider"
             ]
         }
     },

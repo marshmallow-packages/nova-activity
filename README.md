@@ -1,9 +1,29 @@
 ```bash
-php artisan vendor:publish --tag="nova-commentable-config"
+php artisan vendor:publish --tag="nova-activity-config"
 ```
 
 ```bash
-php artisan vendor:publish --tag="nova-commentable-migrations"
+php artisan vendor:publish --tag="nova-activity-migrations"
+```
+
+```php
+// Model
+use Marshmallow\NovaActivity\Traits\NovaActivities;
+use NovaActivities;
+```
+
+```php
+// Resource
+use Marshmallow\NovaActivity\Activity;
+Activity::make(__('Comments Field Name'))
+    ->types(function () {
+        return [
+            2 => 'Klant gebeld en gesproken. Mailt aanvullende info',
+            // ...
+        ];
+    })
+    ->activityTitle(null)
+    ->showOnPreview(),
 ```
 
 ```php

@@ -1,6 +1,6 @@
 <?php
 
-namespace Marshmallow\Comments;
+namespace Marshmallow\NovaActivity;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
@@ -17,21 +17,21 @@ class FieldServiceProvider extends ServiceProvider
     public function boot()
     {
         Route::middleware(['nova'])
-            ->prefix('nova-vendor/nova-comments')
+            ->prefix('nova-vendor/nova-activity')
             ->group(__DIR__ . '/routes.php');
 
         Nova::serving(function (ServingNova $event) {
-            Nova::script('comments', __DIR__ . '/../dist/js/field.js');
-            Nova::style('comments', __DIR__ . '/../dist/css/field.css');
+            Nova::script('nova-activity', __DIR__ . '/../dist/js/field.js');
+            Nova::style('nova-activity', __DIR__ . '/../dist/css/field.css');
         });
 
         $this->publishes([
             __DIR__ . '/../database/migrations/' => database_path('migrations'),
-        ], 'nova-commentable-migrations');
+        ], 'nova-activity-migrations');
 
         $this->publishes([
             __DIR__ . '/../config' => base_path('config'),
-        ], 'nova-commentable-config');
+        ], 'nova-activity-config');
     }
 
     /**
@@ -40,8 +40,8 @@ class FieldServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/nova-commentable.php',
-            'nova-commentable'
+            __DIR__ . '/../config/nova-activity.php',
+            'nova-activity'
         );
     }
 }

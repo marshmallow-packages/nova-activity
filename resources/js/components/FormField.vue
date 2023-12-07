@@ -6,7 +6,7 @@
         :full-width-content="fullWidthContent"
     >
         <template #field>
-            <NovaComments
+            <NovaActivityList
                 :resourceName="resourceName"
                 :field="field"
                 :resourceId="resourceId"
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import NovaComments from "./NovaComments";
+import NovaActivityList from "./NovaActivityList";
 import { FormField, HandlesValidationErrors } from "laravel-nova";
 
 export default {
@@ -24,7 +24,7 @@ export default {
 
     props: ["resourceName", "field", "resourceId"],
 
-    components: { NovaComments },
+    components: { NovaActivityList },
 
     methods: {
         /*

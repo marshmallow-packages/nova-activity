@@ -11,7 +11,7 @@
         </h2>
         <ul role="list" class="tw-space-y-6">
             <template v-for="comment_history_item in comment_history">
-                <HistoryWithOutComment
+                <ActivityWithoutComment
                     v-bind:key="comment_history_item.id"
                     v-if="
                         !comment_history_item.comment ||
@@ -23,7 +23,7 @@
                     :field="field"
                 />
 
-                <HistoryWithComment
+                <ActivityWithComment
                     v-bind:key="comment_history_item.id"
                     v-if="comment_history_item.comment && !comment_history_item.is_hidden"
                     :comment="comment_history_item"
@@ -37,13 +37,13 @@
 </template>
 
 <script>
-    import HistoryWithComment from "./HistoryWithComment";
-    import HistoryWithOutComment from "./HistoryWithOutComment";
+    import ActivityWithComment from "./ActivityWithComment";
+    import ActivityWithoutComment from "./ActivityWithoutComment";
 
     export default {
         props: ["resourceName", "resourceId", "field"],
 
-        components: { HistoryWithComment, HistoryWithOutComment },
+        components: { ActivityWithComment, ActivityWithoutComment },
 
         data() {
             return {
@@ -60,7 +60,7 @@
                 let self = this;
                 Nova.request()
                     .get(
-                        `/nova-vendor/nova-comments/${this.resourceName}/${this.resourceId}/get-comments`
+                        `/nova-vendor/nova-activity/${this.resourceName}/${this.resourceId}/get-comments`
                     )
                     .then(
                         (response) => {

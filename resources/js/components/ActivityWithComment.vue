@@ -19,7 +19,7 @@
             >
                 <div class="tw-py-0.5 tw-cursor-pointer tw-text-xs tw-leading-5 tw-text-gray-500" @click="toggleComment()">
                     <div class="tw-font-medium tw-text-gray-900 tw-flex">
-                        <HistoryStateIcons
+                        <ActivityStateIcons
                             :comment="comment"/>
                         <div>
                             {{ comment.user.name }}
@@ -33,7 +33,7 @@
                     >
                         {{ comment.time_ago }}
                     </time>
-                    <HistoryActions :comment="comment" />
+                    <ActiviyActions :comment="comment" />
                 </div>
             </div>
             <div
@@ -99,13 +99,13 @@
 
 <script>
     import QuickReply from "./QuickReply";
-    import HistoryActions from "./HistoryActions";
-    import HistoryStateIcons from "./HistoryStateIcons";
+    import ActiviyActions from "./ActiviyActions";
+    import ActivityStateIcons from "./ActivityStateIcons";
 
     export default {
         props: ["resourceName", "resourceId", "field", "comment"],
 
-        components: { QuickReply, HistoryActions, HistoryStateIcons },
+        components: { QuickReply, ActiviyActions, ActivityStateIcons },
 
         data() {
             return {

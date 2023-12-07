@@ -4,19 +4,19 @@ use Carbon\Carbon;
 use Laravel\Nova\Nova;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Marshmallow\Comments\Models\NovaComment;
-use Marshmallow\Comments\Resources\NovaCommentsCollection;
+use Marshmallow\NovaActivity\Models\NovaActivity;
+use Marshmallow\NovaActivity\Resources\NovaActivityCollection;
 
 Route::get('/{resourceName}/{resourceId}/get-comments', function ($resourceName, $resourceId, Request $request) {
     $resource = Nova::resourceForKey($resourceName);
     $model = $resource::newModel()->findOrFail($resourceId);
-    return new NovaCommentsCollection(
-        $model->novaComments
+    return new NovaActivityCollection(
+        $model->novaActivity
     );
 });
 
 Route::post('/{comment_id}/set-quick-reply', function ($comment_id, Request $request) {
-    $comment = NovaComment::find($comment_id);
+    $comment = NovaActivity::find($comment_id);
     $meta = $comment->meta;
     $meta['quick_replies']['user_' . $request->user()->id] = $request->quick_reply;
     $comment->update([
@@ -25,7 +25,7 @@ Route::post('/{comment_id}/set-quick-reply', function ($comment_id, Request $req
 });
 
 Route::post('/{comment_id}/run-action', function ($comment_id, Request $request) {
-    $comment = NovaComment::find($comment_id);
+    $comment = NovaActivity::find($comment_id);
     $comment->runAction($request->action);
 });
 
@@ -40,7 +40,7 @@ Route::post('/{resourceName}/{resourceId}', function ($resourceName, $resourceId
             'user_' . $request->user()->id => $request->quick_reply,
         ] : [];
 
-        $model->novaComments()->create([
+        $model->novaActivity()->create([
             'user_id' => $request->user()->id,
             'type_key' => $request->type,
             'type_label' => $request->type_label,

@@ -9,4 +9,4 @@ mix
   .vue({ version: 3 })
 //   .css('resources/css/field.css', 'css')
   .postCss("resources/css/field.css", "css", [tailwindcss("tailwind.config.js")])
-  .nova('marshmallow/comments')
+  .nova('marshmallow/activity')

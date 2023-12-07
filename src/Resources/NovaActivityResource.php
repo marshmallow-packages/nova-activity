@@ -1,11 +1,11 @@
 <?php
 
-namespace Marshmallow\Comments\Resources;
+namespace Marshmallow\NovaActivity\Resources;
 
-use Marshmallow\Comments\Comments;
+use Marshmallow\NovaActivity\Activity;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class NovaCommentResource extends JsonResource
+class NovaActivityResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -20,7 +20,7 @@ class NovaCommentResource extends JsonResource
             'user' => [
                 'id' => $this->user->id,
                 'name' => $this->user->name,
-                'avatar' => Comments::getUserAvatar($this->user),
+                'avatar' => Activity::getUserAvatar($this->user),
             ],
             'type' => [
                 'id' => $this->type_key,

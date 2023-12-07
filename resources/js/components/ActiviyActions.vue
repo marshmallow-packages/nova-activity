@@ -124,7 +124,7 @@
 
                 Nova.request()
                     .post(
-                        `/nova-vendor/nova-comments/${this.comment.id}/run-action`,
+                        `/nova-vendor/nova-activity/${this.comment.id}/run-action`,
                         formData
                     )
                     .then(

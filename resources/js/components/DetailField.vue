@@ -13,7 +13,7 @@
         <div
             class="break-all md:w-3/4 @sm/peekable:w-3/4 @md/modal:w-3/4 md:py-3 @sm/peekable:py-3 md/modal:py-3 lg:break-words @md/peekable:break-words @lg/modal:break-words"
         >
-            <NovaComments
+            <NovaActivityList
                 :resourceName="resourceName"
                 :field="field"
                 :resourceId="resourceId"  />
@@ -23,12 +23,9 @@
 
 
 <script>
-import NovaComments from "./NovaComments";
+import NovaActivityList from "./NovaActivityList";
 export default {
     props: ["index", "resource", "resourceName", "resourceId", "field"],
-    components: { NovaComments },
-    // created() {
-    //     console.log(this.field.name);
-    // }
+    components: { NovaActivityList },
 };
 </script>

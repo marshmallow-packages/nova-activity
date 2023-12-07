@@ -1,12 +1,12 @@
 <?php
 
-namespace Marshmallow\Comments\Resources;
+namespace Marshmallow\NovaActivity\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class NovaCommentsCollection extends ResourceCollection
+class NovaActivityCollection extends ResourceCollection
 {
-    public $collects = NovaCommentResource::class;
+    public $collects = NovaActivityResource::class;
 
     /**
      * Transform the resource collection into an array.

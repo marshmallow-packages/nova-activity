@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create(config('nova-commentable.table_name'), function (Blueprint $table) {
+        Schema::create(config('nova-activity.table_name'), function (Blueprint $table) {
             $table->id();
-            $table->morphs('nova_commentable');
+            $table->morphs('nova_activity');
             $table->unsignedBigInteger('user_id');
             $table->string('type_key')->nullable()->default(null);
             $table->string('type_label')->nullable()->default(null);
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('nova-commentable.table_name'));
+        Schema::dropIfExists(config('nova-activity.table_name'));
     }
 };

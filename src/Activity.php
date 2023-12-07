@@ -1,24 +1,24 @@
 <?php
 
-namespace Marshmallow\Comments;
+namespace Marshmallow\NovaActivity;
 
 use Laravel\Nova\Fields\Field;
 
-class Comments extends Field
+class Activity extends Field
 {
     /**
      * The field's component.
      *
      * @var string
      */
-    public $component = 'comments';
+    public $component = 'activity';
 
     public function __construct(...$params)
     {
         parent::__construct(...$params);
         $this->quickReplies()
             ->addCurrentUser()
-            ->activityTitle(__('Comments'))
+            ->activityTitle(__('Activity'))
             ->fillUsing(function () {
                 //
             });
@@ -27,7 +27,7 @@ class Comments extends Field
     public function quickReplies(): self
     {
         return $this->withMeta([
-            'quick_replies' => array_merge(config('nova-commentable.quick_replies'), [
+            'quick_replies' => array_merge(config('nova-activity.quick_replies'), [
                 '' => [
                     'name' => __('I feel nothing'),
                     'color' => '#ccc',

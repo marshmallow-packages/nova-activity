@@ -169,7 +169,7 @@
                 formData.append("quick_reply", this.quick_reply);
                 return Nova.request()
                     .post(
-                        `/nova-vendor/nova-comments/${this.comment_id}/set-quick-reply`,
+                        `/nova-vendor/nova-activity/${this.comment_id}/set-quick-reply`,
                         formData
                     )
                     .then(

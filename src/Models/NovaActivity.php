@@ -1,12 +1,12 @@
 <?php
 
-namespace Marshmallow\Comments\Models;
+namespace Marshmallow\NovaActivity\Models;
 
 use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class NovaComment extends Model
+class NovaActivity extends Model
 {
     use SoftDeletes;
 
@@ -16,7 +16,7 @@ class NovaComment extends Model
         'meta' => 'array',
     ];
 
-    protected $table = 'nova_commentable';
+    protected $table = 'nova_activity';
 
     public function runAction(string $action)
     {
@@ -41,7 +41,7 @@ class NovaComment extends Model
         return $this->belongsTo(\App\Models\User::class);
     }
 
-    public function novaComments()
+    public function novaActivity()
     {
         return $this->morphTo();
     }

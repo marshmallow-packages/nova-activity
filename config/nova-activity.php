@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'table_name' => 'nova_commentable',
+    'table_name' => 'nova_activity',
 
     'quick_replies' => true,
 
