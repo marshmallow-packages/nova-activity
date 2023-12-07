@@ -36,6 +36,19 @@ Activity::make(__('Comments Field Name'))
 ```
 
 ```php
+$model->addActivity(
+    user_id: $request->user()->id,
+    type: $request->type,
+    label: $request->type_label,
+    comment: $request->comment,
+    created_at: Carbon::parse($request->date)->setTimeFromTimeString(
+        now()->format('H:i:s')
+    ),
+    quick_replies: $quick_replies,
+);
+```
+
+```php
 // App\Models\User
 public function avatarPath()
 {

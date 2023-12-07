@@ -18,9 +18,10 @@ class NovaActivityResource extends JsonResource
         return [
             'id' => $this->id,
             'user' => [
-                'id' => $this->user->id,
-                'name' => $this->user->name,
+                'id' => $this->user?->id ?? null,
+                'name' => $this->user?->name ?? __('System'),
                 'avatar' => Activity::getUserAvatar($this->user),
+                'icon' => $this->user ? null : 'desktop-computer',
             ],
             'type' => [
                 'id' => $this->type_key,
@@ -28,7 +29,7 @@ class NovaActivityResource extends JsonResource
             ],
             'comment' => nl2br($this->comment),
             'meta' => $this->meta,
-            'other_quick_replies' => $this->getOtherQuickReplies($this->user),
+            'other_quick_replies' => $this->getOtherQuickReplies(),
             'time_ago' => $this->created_at->diffForHumans(),
             'is_starred' => $this->is_starred,
             'is_pinned' => $this->is_pinned,

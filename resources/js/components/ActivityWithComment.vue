@@ -6,11 +6,18 @@
             <div class="tw-w-px tw-bg-gray-200"></div>
         </div>
 
-        <img
+        <img v-if="comment.user.avatar"
             :src="comment.user.avatar"
             alt=""
             class="tw-relative tw-mt-3 tw-h-6 tw-w-6 tw-flex-none tw-rounded-full tw-bg-gray-50"
         />
+        <div v-if="!comment.user.avatar && comment.user.icon" class="tw-relative tw-text-center tw-mt-3 tw-h-6 tw-w-6 tw-flex-none tw-rounded-full tw-bg-gray-50">
+            <Icon
+                :width="16"
+                :type="comment.user.icon"
+                :solid="true"
+            />
+        </div>
         <div
             class="tw-flex-auto tw-rounded-md tw-p-3 tw-ring-1 tw-ring-inset tw-ring-gray-200"
         >

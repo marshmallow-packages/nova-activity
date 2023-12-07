@@ -66,8 +66,11 @@ class Activity extends Field
         ]);
     }
 
-    public static function getUserAvatar($user): string
+    public static function getUserAvatar($user = null): string
     {
+        if (!$user) {
+            return '';
+        }
         $avatar = md5($user->email);
         return method_exists($user, 'avatarPath')
             ? $user->avatarPath()

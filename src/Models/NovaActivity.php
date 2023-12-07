@@ -29,10 +29,11 @@ class NovaActivity extends Model
         };
     }
 
-    public function getOtherQuickReplies($user)
+    public function getOtherQuickReplies()
     {
+        $user = auth()->user();
         return collect(Arr::get($this->meta, 'quick_replies', []))->reject(function ($icon, $quick_reply_user) use ($user) {
-            return $quick_reply_user == "user_{$user->id}";
+            return $quick_reply_user == "user_{$user?->id}";
         })->toArray();
     }
 

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create(config('nova-activity.table_name'), function (Blueprint $table) {
             $table->id();
             $table->morphs('nova_activity');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable()->default(null);
             $table->string('type_key')->nullable()->default(null);
             $table->string('type_label')->nullable()->default(null);
             $table->text('comment')->nullable()->default(null);

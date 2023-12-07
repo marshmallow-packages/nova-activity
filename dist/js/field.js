@@ -628,63 +628,72 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 })], -1 /* HOISTED */);
 var _hoisted_3 = ["src"];
 var _hoisted_4 = {
-  "class": "tw-flex-auto tw-rounded-md tw-p-3 tw-ring-1 tw-ring-inset tw-ring-gray-200"
+  key: 1,
+  "class": "tw-relative tw-text-center tw-mt-3 tw-h-6 tw-w-6 tw-flex-none tw-rounded-full tw-bg-gray-50"
 };
 var _hoisted_5 = {
-  "class": "tw-flex tw-justify-between tw-gap-x-4"
+  "class": "tw-flex-auto tw-rounded-md tw-p-3 tw-ring-1 tw-ring-inset tw-ring-gray-200"
 };
 var _hoisted_6 = {
-  "class": "tw-font-medium tw-text-gray-900 tw-flex"
+  "class": "tw-flex tw-justify-between tw-gap-x-4"
 };
 var _hoisted_7 = {
-  "class": "tw-text-gray-500"
+  "class": "tw-font-medium tw-text-gray-900 tw-flex"
 };
 var _hoisted_8 = {
-  "class": "tw-flex tw-gap-x-2"
+  "class": "tw-text-gray-500"
 };
 var _hoisted_9 = {
-  "class": "tw-flex-none tw-py-0.5 tw-text-xs tw-leading-5 tw-text-gray-500"
+  "class": "tw-flex tw-gap-x-2"
 };
 var _hoisted_10 = {
+  "class": "tw-flex-none tw-py-0.5 tw-text-xs tw-leading-5 tw-text-gray-500"
+};
+var _hoisted_11 = {
   key: 0,
   "class": "tw-text-sm tw-leading-6 tw-text-gray-500"
 };
-var _hoisted_11 = ["innerHTML"];
-var _hoisted_12 = {
+var _hoisted_12 = ["innerHTML"];
+var _hoisted_13 = {
   "class": "tw-flex"
 };
-var _hoisted_13 = {
+var _hoisted_14 = {
   key: 0,
   "class": "tw-flex tw--space-x-1 tw-mt-0 tw-overflow-hidden"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_Icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Icon");
   var _component_ActivityStateIcons = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ActivityStateIcons");
   var _component_ActiviyActions = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ActiviyActions");
   var _component_QuickReply = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("QuickReply");
-  var _component_Icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Icon");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_1, [_hoisted_2, $props.comment.user.avatar ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
+    key: 0,
     src: $props.comment.user.avatar,
     alt: "",
     "class": "tw-relative tw-mt-3 tw-h-6 tw-w-6 tw-flex-none tw-rounded-full tw-bg-gray-50"
-  }, null, 8 /* PROPS */, _hoisted_3), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, null, 8 /* PROPS */, _hoisted_3)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$props.comment.user.avatar && $props.comment.user.icon ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Icon, {
+    width: 16,
+    type: $props.comment.user.icon,
+    solid: true
+  }, null, 8 /* PROPS */, ["type"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "tw-py-0.5 tw-cursor-pointer tw-text-xs tw-leading-5 tw-text-gray-500",
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $options.toggleComment();
     })
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ActivityStateIcons, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ActivityStateIcons, {
     comment: $props.comment
-  }, null, 8 /* PROPS */, ["comment"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.comment.user.name) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.comment.type.label), 1 /* TEXT */)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("time", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.comment.time_ago), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ActiviyActions, {
+  }, null, 8 /* PROPS */, ["comment"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.comment.user.name) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.comment.type.label), 1 /* TEXT */)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("time", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.comment.time_ago), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ActiviyActions, {
     comment: $props.comment
-  }, null, 8 /* PROPS */, ["comment"])])]), $data.show_comment ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  }, null, 8 /* PROPS */, ["comment"])])]), $data.show_comment ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
     "class": "tw-mb-4",
     innerHTML: $props.comment.comment
-  }, null, 8 /* PROPS */, _hoisted_11)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_QuickReply, {
+  }, null, 8 /* PROPS */, _hoisted_12)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_QuickReply, {
     field: $props.field,
     comment_id: $props.comment.id,
     current_value: $props.comment.meta && $props.comment.meta.quick_replies ? $props.comment.meta.quick_replies['user_' + $props.field.user.id] : '',
     action: "update_quick_reply",
     size: "small"
-  }, null, 8 /* PROPS */, ["field", "comment_id", "current_value"]), $props.comment.other_quick_replies ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.comment.other_quick_replies, function (other_quick_reply, index) {
+  }, null, 8 /* PROPS */, ["field", "comment_id", "current_value"]), $props.comment.other_quick_replies ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.comment.other_quick_replies, function (other_quick_reply, index) {
     var _$props$field$quick_r;
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": "tw-inline-block",

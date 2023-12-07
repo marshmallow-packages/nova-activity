@@ -4,6 +4,7 @@ use Carbon\Carbon;
 use Laravel\Nova\Nova;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Laravel\Nova\Notifications\NovaNotification;
 use Marshmallow\NovaActivity\Models\NovaActivity;
 use Marshmallow\NovaActivity\Resources\NovaActivityCollection;
 
@@ -45,18 +46,16 @@ Route::post('/{resourceName}/{resourceId}', function ($resourceName, $resourceId
             'user_' . $request->user()->id => $request->quick_reply,
         ] : [];
 
-        $model->novaActivity()->create([
-            'user_id' => $request->user()->id,
-            'type_key' => $request->type,
-            'type_label' => $request->type_label,
-            'comment' => $request->comment,
-            'created_at' => Carbon::parse($request->date)->setTimeFromTimeString(
+        $model->addActivity(
+            user_id: $request->user()->id,
+            type: $request->type,
+            label: $request->type_label,
+            comment: $request->comment,
+            created_at: Carbon::parse($request->date)->setTimeFromTimeString(
                 now()->format('H:i:s')
             ),
-            'meta' => [
-                'quick_replies' => $quick_replies,
-            ],
-        ]);
+            quick_replies: $quick_replies,
+        );
 
         return [
             'success' => true,
