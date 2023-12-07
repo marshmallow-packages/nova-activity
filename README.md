@@ -1,4 +1,8 @@
 ```bash
+composer require marshmallow/nova-activity
+```
+
+```bash
 php artisan vendor:publish --tag="nova-activity-config"
 ```
 
