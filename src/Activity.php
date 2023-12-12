@@ -20,6 +20,7 @@ class Activity extends Field
         parent::__construct(...$params);
         $this->quickReplies()
             ->addCurrentUser()
+            ->useComments(config('nova-activity.use_comments'))
             ->setLocale(config('app.locale'))
             ->dateFormat('Do MMM, YYYY')
             ->activityTitle(__('novaActivity.title'))
@@ -65,6 +66,13 @@ class Activity extends Field
             'mentions' => [
                 'users' => $users,
             ],
+        ]);
+    }
+
+    public function useComments(bool $use_comments)
+    {
+        return $this->withMeta([
+            'use_comments' => $use_comments,
         ]);
     }
 

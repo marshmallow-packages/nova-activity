@@ -107,3 +107,11 @@ public function avatarPath()
     },
 )
 ```
+
+```php
+return [
+    'use_comments' => false,
+]
+
+useComments(false)
+```

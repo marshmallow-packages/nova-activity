@@ -5,6 +5,8 @@ return [
 
     'quick_replies' => true,
 
+    'use_comments' => false,
+
     'comment_validation' => [
         'type' => 'required',
     ],

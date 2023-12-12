@@ -301,7 +301,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append("resource_name", this.resourceName);
       formData.append("resource_id", this.resourceId);
       formData.append("date", this.date);
-      formData.append("comment", document.getElementById("comment").value);
+      formData.append("comment", this.field.use_comments ? document.getElementById("comment").value : "");
       formData.append("type", this.type);
       formData.append("type_label", this.field.types[this.type] === undefined ? "" : this.field.types[this.type]);
       formData.append("quick_reply", this.quick_reply);
@@ -326,8 +326,10 @@ __webpack_require__.r(__webpack_exports__);
       this.comment = "";
       this.quick_reply = "";
       this.$refs.createQuickReply.reset();
-      document.getElementById("comment").editor.loadHTML("");
       this.date = this.moment(new Date()).format("YYYY-MM-DD");
+      if (this.field.use_comments) {
+        document.getElementById("comment").editor.loadHTML("");
+      }
     }
   }
 });
@@ -985,13 +987,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     id: "type",
     name: "type",
     placeholder: _ctx.__('novaActivity.select_comment_type_placeholder')
-  }, null, 8 /* PROPS */, ["options", "modelValue", "placeholder"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_trix_editor, {
+  }, null, 8 /* PROPS */, ["options", "modelValue", "placeholder"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [$props.field.use_comments ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_trix_editor, {
+    key: 0,
     rows: "3",
     name: "comment",
     id: "comment",
     "class": "tw-block tw-pl-2 tw-w-full tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 placeholder:tw-text-gray-400 sm:tw-text-sm sm:tw-leading-6",
     placeholder: _ctx.__('novaActivity.comment_placeholder')
-  }, null, 8 /* PROPS */, ["placeholder"]), _hoisted_8]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_QuickReply, {
+  }, null, 8 /* PROPS */, ["placeholder"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_8]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_QuickReply, {
     field: $props.field,
     action: "new_comment",
     ref: "createQuickReply"

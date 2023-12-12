@@ -26,6 +26,7 @@
                     class="tw-overflow-hidden tw-rounded-lg tw-shadow-sm tw-ring-1 tw-ring-inset tw-ring-gray-300"
                 >
                     <trix-editor
+                        v-if="field.use_comments"
                         rows="3"
                         name="comment"
                         id="comment"
@@ -107,7 +108,6 @@
 
         mounted() {
             if (this.field.mentions) {
-
                 var tribute = new Tribute({
                     values: this.field.mentions.users,
                     selectTemplate: function (item) {
@@ -176,7 +176,9 @@
                 formData.append("date", this.date);
                 formData.append(
                     "comment",
-                    document.getElementById("comment").value
+                    this.field.use_comments
+                        ? document.getElementById("comment").value
+                        : ""
                 );
                 formData.append("type", this.type);
                 formData.append(
@@ -218,8 +220,11 @@
                 this.comment = "";
                 this.quick_reply = "";
                 this.$refs.createQuickReply.reset();
-                document.getElementById("comment").editor.loadHTML("");
                 this.date = this.moment(new Date()).format("YYYY-MM-DD");
+
+                if (this.field.use_comments) {
+                    document.getElementById("comment").editor.loadHTML("");
+                }
             },
         },
     };
