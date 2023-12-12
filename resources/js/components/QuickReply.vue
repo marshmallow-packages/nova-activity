@@ -144,6 +144,9 @@
         },
 
         methods: {
+            reset() {
+                this.quick_reply = '';
+            },
             handleQuickReply(quick_reply) {
                 if (this.action == 'new_comment') {
                     this.quick_reply = quick_reply;

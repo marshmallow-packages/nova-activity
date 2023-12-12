@@ -11,5 +11,6 @@
     "novaActivity.select_comment_type_placeholder": "Select your comment type...",
     "novaActivity.comment_placeholder": "Add your comment...",
     "novaActivity.post_comment": "Post activity",
-    "novaActivity.i_feel_nothing": "I feel nothing"
+    "novaActivity.i_feel_nothing": "I feel nothing",
+    "novaActivity.mentions_no_results": "No result"
 }

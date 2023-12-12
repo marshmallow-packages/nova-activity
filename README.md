@@ -93,3 +93,17 @@ public function avatarPath()
     return auth()->user()->locale;
 })
 ```
+
+```php
+->mentions(
+    users: function (): array {
+        return User::get()->map(function ($user) {
+            return [
+                'value' => str_slug($user->name),
+                'avatar_url' => Activity::getUserAvatar($user),
+                'key' => $user->name,
+            ];
+        })->toArray();
+    },
+)
+```
