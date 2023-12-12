@@ -48,7 +48,15 @@ $model->addActivity(
     created_at: Carbon::parse($request->date)->setTimeFromTimeString(
         now()->format('H:i:s')
     ),
-    quick_replies: $quick_replies,
+    quick_replies: [
+        'user_1' => 'sad',
+    ],
+    mentions: [
+        [
+            'key' => 1,
+            'class' => User::class,
+        ]
+    ]
 );
 ```
 
@@ -96,9 +104,10 @@ public function avatarPath()
 
 ```php
 ->mentions(
-    users: function (): array {
+    function (): array {
         return User::get()->map(function ($user) {
             return [
+                'model' => $user,
                 'value' => str_slug($user->name),
                 'avatar_url' => Activity::getUserAvatar($user),
                 'key' => $user->name,
@@ -106,4 +115,103 @@ public function avatarPath()
         })->toArray();
     },
 )
+
+/** Check if this activity has any mentions. */
+$activity->hasMentions();
+
+/** Get a collection of all the classes that where mentioned. */
+$activity->getMentions();
+
+```
+
+```php
+return [
+    'use_comments' => false,
+]
+
+useComments(false)
+```
+
+```php
+use App\Listeners\DoWhatEver;
+use Marshmallow\NovaActivity\Events\ActivityCreated;
+protected $listen = [
+    ActivityCreated::class => [
+        DoWhatEver::class
+    ],
+];
+
+// Listeners
+class DoWhatEver
+{
+    public function handle($event)
+    {
+        /** Get the model on which the activity was created. */
+        $event->model;
+
+        /** Get the created activity. */
+        $event->activity;
+
+        /** Check if this activity has any mentions. */
+        $event->activity->hasMentions();
+
+        /** Get a collection of all the classes that where mentioned. */
+        $event->activity->getMentions();
+    }
+}
+```
+
+## Events
+
+```php
+$event = ActivityCreated::class;
+$activity = $event->activity;
+$model = $event->activity->novaActivity;
+```
+
+```php
+$event = QuickReplyChanged::class;
+$activity = $event->activity;
+$model = $event->activity->novaActivity;
+$user = $event->user;
+```
+
+```php
+$event = ActivityPinned::class;
+$activity = $event->activity;
+$model = $event->activity->novaActivity;
+$user = $event->user;
+```
+
+```php
+$event = ActivityUnpinned::class;
+$activity = $event->activity;
+$model = $event->activity->novaActivity;
+$user = $event->user;
+```
+
+```php
+$event = ActivityCommentHidden::class;
+$activity = $event->activity;
+$model = $event->activity->novaActivity;
+$user = $event->user;
+```
+
+```php
+$event = ActivityCommentShow::class;
+$activity = $event->activity;
+$model = $event->activity->novaActivity;
+$user = $event->user;
+```
+
+```php
+$event = ActivityDeleted::class;
+$activity = $event->activity;
+$model = $event->activity->novaActivity;
+$user = $event->user;
+```
+
+```php
+/** Add this so the index button will work. */
+public static $clickAction = 'ignore';
 ```

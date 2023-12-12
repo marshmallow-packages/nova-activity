@@ -34,9 +34,6 @@
 .tw--m-2\.5 {
     margin: -0.625rem
 }
-.-tw-ml-\[0\.35rem\] {
-    margin-left: -0.35rem
-}
 .tw--ml-6 {
     margin-left: -1.5rem
 }
@@ -54,6 +51,9 @@
 }
 .tw-mb-6 {
     margin-bottom: 1.5rem
+}
+.tw-mb-8 {
+    margin-bottom: 2rem
 }
 .tw-ml-3 {
     margin-left: 0.75rem
@@ -203,6 +203,11 @@
     margin-right: calc(-0.25rem * var(--tw-space-x-reverse));
     margin-left: calc(-0.25rem * calc(1 - var(--tw-space-x-reverse)))
 }
+.tw-space-x-4 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1rem * var(--tw-space-x-reverse));
+    margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)))
+}
 .tw-space-x-5 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
     margin-right: calc(1.25rem * var(--tw-space-x-reverse));
@@ -239,6 +244,9 @@
 .tw-border-0 {
     border-width: 0px
 }
+.tw-border-b {
+    border-bottom-width: 1px
+}
 .tw-bg-gray-100 {
     --tw-bg-opacity: 1;
     background-color: rgb(243 244 246 / var(--tw-bg-opacity))
@@ -260,6 +268,9 @@
 }
 .tw-p-3 {
     padding: 0.75rem
+}
+.tw-p-6 {
+    padding: 1.5rem
 }
 .tw-px-2 {
     padding-left: 0.5rem;
@@ -436,28 +447,22 @@
     outline: 2px solid transparent;
     outline-offset: 2px
 }
-:is(.tw-dark .dark\:tw-bg-gray-500) {
-    --tw-bg-opacity: 1;
-    background-color: rgb(107 114 128 / var(--tw-bg-opacity))
-}
-:is(.tw-dark .dark\:tw-bg-none) {
-    background-image: none
-}
-:is(.tw-dark .dark\:tw-text-gray-200) {
-    --tw-text-opacity: 1;
-    color: rgb(229 231 235 / var(--tw-text-opacity))
-}
-:is(.tw-dark .dark\:tw-text-gray-400) {
-    --tw-text-opacity: 1;
-    color: rgb(156 163 175 / var(--tw-text-opacity))
-}
-:is(.tw-dark .dark\:tw-text-gray-500) {
-    --tw-text-opacity: 1;
-    color: rgb(107 114 128 / var(--tw-text-opacity))
-}
-:is(.tw-dark .dark\:tw-ring-gray-600) {
-    --tw-ring-opacity: 1;
-    --tw-ring-color: rgb(75 85 99 / var(--tw-ring-opacity))
+@media (prefers-color-scheme: dark) {
+    .dark\:tw-bg-none {
+        background-image: none
+    }
+    .dark\:tw-text-gray-300 {
+        --tw-text-opacity: 1;
+        color: rgb(209 213 219 / var(--tw-text-opacity))
+    }
+    .dark\:tw-text-gray-400 {
+        --tw-text-opacity: 1;
+        color: rgb(156 163 175 / var(--tw-text-opacity))
+    }
+    .dark\:tw-text-gray-500 {
+        --tw-text-opacity: 1;
+        color: rgb(107 114 128 / var(--tw-text-opacity))
+    }
 }
 @media (min-width: 640px) {
     .sm\:tw-ml-auto {

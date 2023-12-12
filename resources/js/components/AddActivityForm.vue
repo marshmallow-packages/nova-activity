@@ -10,6 +10,7 @@
         <div class="tw-min-w-0 tw-flex-1">
             <div class="tw-relative">
                 <div class="tw-mb-2">
+                    <input name="focus_trap" style="position:absolute;top:-50000px;left:-50000px;" />
                     <model-select
                         class="block w-full form-control form-select form-select-multiple"
                         :options="comment_types"
@@ -27,6 +28,7 @@
                     class="tw-overflow-hidden tw-rounded-lg tw-shadow-sm tw-ring-1 tw-ring-inset tw-ring-gray-300"
                 >
                     <trix-editor
+                        v-if="field.use_comments"
                         rows="3"
                         name="comment"
                         id="comment"
@@ -109,7 +111,7 @@
         mounted() {
             if (this.field.mentions) {
                 var tribute = new Tribute({
-                    values: this.field.mentions.users,
+                    values: this.field.mentions,
                     selectTemplate: function (item) {
                         return "<strong>@" + item.original.value + "</strong>";
                     },
@@ -176,9 +178,15 @@
                 formData.append("date", this.date);
                 formData.append(
                     "comment",
-                    document.getElementById("comment").value
+                    this.field.use_comments
+                        ? document.getElementById("comment").value
+                        : ""
                 );
                 formData.append("type", this.type);
+                formData.append(
+                    "mentions",
+                    JSON.stringify(this.field.mentions)
+                );
                 formData.append(
                     "type_label",
                     this.field.types[this.type] === undefined
@@ -218,8 +226,11 @@
                 this.comment = "";
                 this.quick_reply = "";
                 this.$refs.createQuickReply.reset();
-                document.getElementById("comment").editor.loadHTML("");
                 this.date = this.moment(new Date()).format("YYYY-MM-DD");
+
+                if (this.field.use_comments) {
+                    document.getElementById("comment").editor.loadHTML("");
+                }
             },
         },
     };

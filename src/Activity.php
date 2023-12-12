@@ -20,6 +20,7 @@ class Activity extends Field
         parent::__construct(...$params);
         $this->quickReplies()
             ->addCurrentUser()
+            ->useComments(config('nova-activity.use_comments'))
             ->setLocale(config('app.locale'))
             ->dateFormat('Do MMM, YYYY')
             ->activityTitle(__('novaActivity.title'))
@@ -58,13 +59,26 @@ class Activity extends Field
         ]);
     }
 
-    public function mentions(array|callable $users)
+    public function mentions(array|callable $mentions)
     {
-        $users = is_callable($users) ? $users() : $users;
+        $mentions = is_callable($mentions) ? $mentions() : $mentions;
         return $this->withMeta([
-            'mentions' => [
-                'users' => $users,
-            ],
+            'mentions' => collect($mentions)->map(function ($mention) {
+                if (array_key_exists('model', $mention)) {
+                    $mention['model'] = [
+                        'class' => get_class($mention['model']),
+                        'key' => $mention['model']->getKey(),
+                    ];
+                }
+                return $mention;
+            })->toArray(),
+        ]);
+    }
+
+    public function useComments(bool $use_comments)
+    {
+        return $this->withMeta([
+            'use_comments' => $use_comments,
         ]);
     }
 

@@ -12,5 +12,7 @@
     "novaActivity.comment_placeholder": "Schrijf hier een opmerking...",
     "novaActivity.post_comment": "Plaats activiteit",
     "novaActivity.i_feel_nothing": "Verwijder mijn gevoel",
-    "novaActivity.mentions_no_results": "Geen resultaten"
+    "novaActivity.mentions_no_results": "Geen resultaten",
+    "novaActivity.open_index_model": "Activiteit bekijken",
+    "novaActivity.close_index_model": "Activiteit sluiten"
 }
