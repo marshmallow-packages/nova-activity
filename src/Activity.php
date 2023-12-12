@@ -20,7 +20,7 @@ class Activity extends Field
         parent::__construct(...$params);
         $this->quickReplies()
             ->addCurrentUser()
-            ->activityTitle(__('Activity'))
+            ->activityTitle(__('novaActivity.title'))
             ->fillUsing(function () {
                 //
             });
@@ -31,7 +31,7 @@ class Activity extends Field
         return $this->withMeta([
             'quick_replies' => array_merge(config('nova-activity.quick_replies'), [
                 '' => [
-                    'name' => __('I feel nothing'),
+                    'name' => __('novaActivity.i_feel_nothing'),
                     'color' => '#ccc',
                     'background' => '#fff',
                     'icon' => 'x',

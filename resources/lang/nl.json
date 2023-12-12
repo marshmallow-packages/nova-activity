@@ -1,4 +1,5 @@
 {
+    "novaActivity.title": "Activiteiten",
     "novaActivity.view_all_activity": "Bekijk alle activiteiten",
     "novaActivity.count_more": ":count meer",
     "novaActivity.only_show_latests": "Bekijk alleen de laatste",
@@ -9,5 +10,6 @@
     "novaActivity.delete_activity": "Verwijder activiteit",
     "novaActivity.select_comment_type_placeholder": "Selecteer een type...",
     "novaActivity.comment_placeholder": "Schrijf hier een opmerking...",
-    "novaActivity.post_comment": "Plaats activiteit"
+    "novaActivity.post_comment": "Plaats activiteit",
+    "novaActivity.i_feel_nothing": "Verwijder mijn gevoel"
 }
