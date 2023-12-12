@@ -693,7 +693,7 @@ var _hoisted_4 = {
   "class": "tw-relative tw-text-center tw-mt-3 tw-h-6 tw-w-6 tw-flex-none tw-rounded-full tw-bg-gray-50"
 };
 var _hoisted_5 = {
-  "class": "tw-flex-auto tw-mt-3 tw-rounded-md tw-p-3 tw-ring-1 tw-ring-inset tw-ring-gray-200 dark:tw-ring-gray-600 dark:ring-gray-600"
+  "class": "tw-flex-auto tw-mt-3 tw-rounded-md tw-p-3 tw-ring-1 tw-ring-inset tw-ring-gray-200 dark:tw-ring-gray-600 dark:tw-bg-gray-800"
 };
 var _hoisted_6 = {
   "class": "tw-flex tw-justify-between tw-gap-x-4"
