@@ -30,10 +30,10 @@
                         class="tw-font-medium dark:text-gray-400 tw-text-gray-900 tw-flex"
                     >
                         <ActivityStateIcons :comment="comment" />
-                        <div class="dark:text-gray-400">
+                        <div class="dark:text-gray-200">
                             {{ comment.user.name }}
                             <span
-                                class="tw-text-gray-500 dark:tw-text-gray-300"
+                                class="tw-text-gray-500 dark:tw-text-gray-400"
                                 >{{ comment.type.label }}</span
                             >
                         </div>
@@ -53,7 +53,7 @@
                 class="tw-text-sm tw-leading-6 tw-text-gray-500 dark:tw-text-gray-300"
             >
                 <p
-                    class="tw-mb-4 dark:tw-text-blue-800"
+                    class="tw-mb-4 dark:tw-text-gray-200"
                     v-html="comment.comment"
                 ></p>
             </div>
