@@ -26,43 +26,29 @@
                                 clip-rule="evenodd"
                             />
                         </svg>
-                        <span class="tw-sr-only"
-                            >Add your mood</span
-                        >
+                        <span class="tw-sr-only">Add your mood</span>
                     </span>
                     <!-- Selected item label, show/hide based on listbox state. -->
                     <span v-if="quick_reply">
                         <span
                             :style="{
                                 background:
-                                    field
-                                        .quick_replies[
-                                        quick_reply
-                                    ]
-                                        .background,
+                                    field.quick_replies[quick_reply].background,
                                 color:
-                                    field
-                                        .quick_replies[
-                                        quick_reply
-                                    ].color ??
+                                    field.quick_replies[quick_reply].color ??
                                     '#fff',
                             }"
-                            :class="{ 'tw-w-8 tw-h-8': icon_size_class == 'normal', 'tw-w-6 tw-h-6': icon_size_class == 'small' }"
+                            :class="{
+                                'tw-w-8 tw-h-8': icon_size_class == 'normal',
+                                'tw-w-6 tw-h-6': icon_size_class == 'small',
+                            }"
                             class="tw-flex tw-items-center tw-justify-center tw-rounded-full"
                         >
                             <Icon
                                 :width="icon_size_class == 'normal' ? 24 : 16"
-                                :type="
-                                    field
-                                        .quick_replies[
-                                        quick_reply
-                                    ].icon
-                                "
+                                :type="field.quick_replies[quick_reply].icon"
                                 :solid="
-                                    field
-                                        .quick_replies[
-                                        quick_reply
-                                    ].solid_icon
+                                    field.quick_replies[quick_reply].solid_icon
                                 "
                             />
                         </span>
@@ -71,58 +57,40 @@
             </button>
             <ul
                 v-if="show_quick_reply_selector"
-                class="tw-absolute tw-z-10 tw--ml-6 tw-mt-1 tw-w-60 tw-rounded-lg tw-bg-white tw-py-3 tw-text-base tw-shadow tw-ring-1 tw-bottom-0 tw-ring-black tw-ring-opacity-5 focus:tw-outline-none sm:tw-ml-auto sm:tw-w-64 sm:tw-text-sm"
+                class="tw-absolute tw-z-10 tw--ml-6 tw-mt-1 tw-w-60 tw-rounded-lg dark:tw-bg-none tw-bg-white tw-py-3 tw-text-base tw-shadow tw-ring-1 tw-bottom-0 tw-ring-black tw-ring-opacity-5 focus:tw-outline-none sm:tw-ml-auto sm:tw-w-64 sm:tw-text-sm"
                 tabindex="-1"
                 role="listbox"
                 aria-labelledby="listbox-label"
                 aria-activedescendant="listbox-option-5"
             >
                 <li
-                    @click="
-                        handleQuickReply(
-                            quick_reply_value
-                        )
-                    "
+                    @click="handleQuickReply(quick_reply_value)"
                     v-for="(
-                        quick_reply,
-                        quick_reply_value
+                        quick_reply, quick_reply_value
                     ) in field.quick_replies"
-                    v-bind:key="
-                        quick_reply_value
-                    "
-                    class="tw-bg-white tw-cursor-pointer hover:tw-bg-gray-100 tw-relative tw-select-none tw-px-3 tw-py-2"
+                    v-bind:key="quick_reply_value"
+                    class="tw-bg-white dark:tw-bg-none tw-cursor-pointer hover:tw-bg-gray-100 tw-relative tw-select-none tw-px-3 tw-py-2"
                     id="listbox-option-0"
                     role="option"
                 >
-                    <div
-                        class="tw-flex tw-items-center"
-                    >
+                    <div class="tw-flex tw-items-center">
                         <div
                             :style="{
-                                background:
-                                    quick_reply.background,
-                                color:
-                                    quick_reply.color ??
-                                    '#fff',
+                                background: quick_reply.background,
+                                color: quick_reply.color ?? '#fff',
                             }"
                             class="tw-flex tw-h-6 tw-w-6 tw-items-center tw-justify-center tw-rounded-full"
                         >
                             <Icon
                                 width="16"
-                                :type="
-                                    quick_reply.icon
-                                "
-                                :solid="
-                                    quick_reply.solid_icon
-                                "
+                                :type="quick_reply.icon"
+                                :solid="quick_reply.solid_icon"
                             />
                         </div>
                         <span
                             class="tw-ml-3 tw-block tw-truncate tw-font-medium"
                         >
-                            {{
-                                quick_reply.name
-                            }}
+                            {{ quick_reply.name }}
                         </span>
                     </div>
                 </li>
@@ -135,8 +103,8 @@
         props: ["action", "field", "current_value", "size", "comment_id"],
 
         data: () => ({
-            quick_reply: '',
-            icon_size_class: 'normal',
+            quick_reply: "",
+            icon_size_class: "normal",
             show_quick_reply_selector: false,
         }),
 
@@ -149,7 +117,7 @@
 
         methods: {
             handleQuickReply(quick_reply) {
-                if (this.action == 'new_comment') {
+                if (this.action == "new_comment") {
                     this.quick_reply = quick_reply;
                     this.$parent.setQuickReply(quick_reply);
                     this.show_quick_reply_selector = false;
@@ -189,7 +157,7 @@
                             self.action_run_successfully = false;
                         }, 2500);
                     });
-            }
+            },
         },
     };
 </script>

@@ -26,7 +26,9 @@
                     class="tw-py-0.5 tw-cursor-pointer tw-text-xs tw-leading-5 tw-text-gray-500"
                     @click="toggleComment()"
                 >
-                    <div class="tw-font-medium tw-text-gray-900 tw-flex">
+                    <div
+                        class="tw-font-medium dark:text-gray-400 tw-text-gray-900 tw-flex"
+                    >
                         <ActivityStateIcons :comment="comment" />
                         <div>
                             {{ comment.user.name }}
