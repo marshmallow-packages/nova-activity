@@ -109,7 +109,7 @@
         mounted() {
             if (this.field.mentions) {
                 var tribute = new Tribute({
-                    values: this.field.mentions.users,
+                    values: this.field.mentions,
                     selectTemplate: function (item) {
                         return "<strong>@" + item.original.value + "</strong>";
                     },
@@ -181,6 +181,7 @@
                         : ""
                 );
                 formData.append("type", this.type);
+                formData.append("mentions", JSON.stringify(this.field.mentions));
                 formData.append(
                     "type_label",
                     this.field.types[this.type] === undefined

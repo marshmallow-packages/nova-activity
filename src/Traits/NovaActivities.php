@@ -14,8 +14,9 @@ trait NovaActivities
         string $comment = null,
         Carbon $created_at = null,
         array $quick_replies = [],
-    ) {
-        $this->novaActivity()->create([
+        array $mentions = [],
+    ): NovaActivity {
+        return $this->novaActivity()->create([
             'user_id' => $user_id,
             'type_key' => $type,
             'type_label' => $label,
@@ -24,6 +25,7 @@ trait NovaActivities
             'meta' => [
                 'quick_replies' => $quick_replies,
             ],
+            'mentions' => $mentions,
         ]);
     }
 

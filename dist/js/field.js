@@ -252,7 +252,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     if (this.field.mentions) {
       var tribute = new (tributejs__WEBPACK_IMPORTED_MODULE_1___default())({
-        values: this.field.mentions.users,
+        values: this.field.mentions,
         selectTemplate: function selectTemplate(item) {
           return "<strong>@" + item.original.value + "</strong>";
         },
@@ -303,6 +303,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append("date", this.date);
       formData.append("comment", this.field.use_comments ? document.getElementById("comment").value : "");
       formData.append("type", this.type);
+      formData.append("mentions", JSON.stringify(this.field.mentions));
       formData.append("type_label", this.field.types[this.type] === undefined ? "" : this.field.types[this.type]);
       formData.append("quick_reply", this.quick_reply);
       return Nova.request().post("/nova-vendor/nova-activity/".concat(this.resourceName, "/").concat(this.resourceId), formData).then(function (response) {

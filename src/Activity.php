@@ -59,13 +59,19 @@ class Activity extends Field
         ]);
     }
 
-    public function mentions(array|callable $users)
+    public function mentions(array|callable $mentions)
     {
-        $users = is_callable($users) ? $users() : $users;
+        $mentions = is_callable($mentions) ? $mentions() : $mentions;
         return $this->withMeta([
-            'mentions' => [
-                'users' => $users,
-            ],
+            'mentions' => collect($mentions)->map(function ($mention) {
+                if (array_key_exists('model', $mention)) {
+                    $mention['model'] = [
+                        'class' => get_class($mention['model']),
+                        'key' => $mention['model']->getKey(),
+                    ];
+                }
+                return $mention;
+            })->toArray(),
         ]);
     }
 

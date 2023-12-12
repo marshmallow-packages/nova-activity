@@ -15,6 +15,7 @@ class NovaActivity extends Model
 
     protected $casts = [
         'meta' => 'array',
+        'mentions' => 'array',
     ];
 
     protected $table = 'nova_activity';

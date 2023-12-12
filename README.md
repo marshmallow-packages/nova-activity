@@ -96,9 +96,10 @@ public function avatarPath()
 
 ```php
 ->mentions(
-    users: function (): array {
+    function (): array {
         return User::get()->map(function ($user) {
             return [
+                'model' => $user,
                 'value' => str_slug($user->name),
                 'avatar_url' => Activity::getUserAvatar($user),
                 'key' => $user->name,
@@ -114,4 +115,14 @@ return [
 ]
 
 useComments(false)
+```
+
+```php
+use App\Listeners\DoWhatEver;
+use Marshmallow\NovaActivity\Events\ActivityCreated;
+protected $listen = [
+    ActivityCreated::class => [
+        DoWhatEver::class
+    ],
+];
 ```
