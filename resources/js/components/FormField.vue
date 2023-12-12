@@ -16,30 +16,30 @@
 </template>
 
 <script>
-import NovaActivityList from "./NovaActivityList";
-import { FormField, HandlesValidationErrors } from "laravel-nova";
+    import NovaActivityList from "./NovaActivityList";
+    import { FormField, HandlesValidationErrors } from "laravel-nova";
 
-export default {
-    mixins: [FormField, HandlesValidationErrors],
+    export default {
+        mixins: [FormField, HandlesValidationErrors],
 
-    props: ["resourceName", "field", "resourceId"],
+        props: ["resourceName", "field", "resourceId"],
 
-    components: { NovaActivityList },
+        components: { NovaActivityList },
 
-    methods: {
-        /*
-         * Set the initial, internal value for the field.
-         */
-        setInitialValue() {
-            this.value = this.field.value || "";
+        methods: {
+            /*
+             * Set the initial, internal value for the field.
+             */
+            setInitialValue() {
+                this.value = this.field.value || "";
+            },
+
+            /**
+             * Fill the given FormData object with the field's internal value.
+             */
+            fill(formData) {
+                formData.append(this.fieldAttribute, this.value || "");
+            },
         },
-
-        /**
-         * Fill the given FormData object with the field's internal value.
-         */
-        fill(formData) {
-            formData.append(this.fieldAttribute, this.value || "");
-        },
-    },
-};
+    };
 </script>

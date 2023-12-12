@@ -20,7 +20,9 @@ class Activity extends Field
         parent::__construct(...$params);
         $this->quickReplies()
             ->addCurrentUser()
-            ->activityTitle(__('Activity'))
+            ->setLocale(config('app.locale'))
+            ->dateFormat('Do MMM, YYYY')
+            ->activityTitle(__('novaActivity.title'))
             ->fillUsing(function () {
                 //
             });
@@ -31,7 +33,7 @@ class Activity extends Field
         return $this->withMeta([
             'quick_replies' => array_merge(config('nova-activity.quick_replies'), [
                 '' => [
-                    'name' => __('I feel nothing'),
+                    'name' => __('novaActivity.i_feel_nothing'),
                     'color' => '#ccc',
                     'background' => '#fff',
                     'icon' => 'x',
@@ -53,6 +55,21 @@ class Activity extends Field
     {
         return $this->withMeta([
             'limit' => $limit,
+        ]);
+    }
+
+    public function setLocale(string|callable $locale)
+    {
+        $locale = is_callable($locale) ? $locale() : $locale;
+        return $this->withMeta([
+            'locale' => $locale,
+        ]);
+    }
+
+    public function dateFormat(string $date_format)
+    {
+        return $this->withMeta([
+            'date_format' => $date_format,
         ]);
     }
 

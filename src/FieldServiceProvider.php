@@ -6,9 +6,12 @@ use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Outl1ne\NovaTranslationsLoader\LoadsNovaTranslations;
 
 class FieldServiceProvider extends ServiceProvider
 {
+    use LoadsNovaTranslations;
+
     /**
      * Bootstrap any application services.
      *
@@ -32,6 +35,12 @@ class FieldServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config' => base_path('config'),
         ], 'nova-activity-config');
+
+        $this->loadTranslations(__DIR__ . '/../resources/lang', 'nova-activity', true);
+
+        $this->publishes([
+            __DIR__ . '/../resources/lang' => $this->app->langPath('vendor/nova-activity'),
+        ], 'nova-activiy-translations');
     }
 
     /**

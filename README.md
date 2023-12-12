@@ -10,6 +10,10 @@ php artisan vendor:publish --tag="nova-activity-config"
 php artisan vendor:publish --tag="nova-activity-migrations"
 ```
 
+```bash
+php artisan vendor:publish --tag="nova-activiy-translations"
+```
+
 ```php
 // Model
 use Marshmallow\NovaActivity\Traits\NovaActivities;
@@ -75,4 +79,17 @@ public function avatarPath()
 ```php
 ->limit(3)
 ->alwaysShowComments()
+```
+
+```php
+// momentjs format
+->dateFormat('DD MMM YYYY')
+```
+
+```php
+// momentjs format
+->setLocale('nl')
+->setLocale(function () {
+    return auth()->user()->locale;
+})
 ```

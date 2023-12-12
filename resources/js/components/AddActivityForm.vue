@@ -15,7 +15,9 @@
                         v-model="type"
                         id="type"
                         name="type"
-                        placeholder="Select your comment type..."
+                        :placeholder="
+                            __('novaActivity.select_comment_type_placeholder')
+                        "
                     >
                     </model-select>
                 </div>
@@ -28,8 +30,8 @@
                         rows="3"
                         name="comment"
                         id="comment"
-                        class="tw-block tw-pl-2 tw-w-full tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 dark:tw-text-gray-400 placeholder:tw-text-gray-400 sm:tw-text-sm sm:tw-leading-6"
-                        placeholder="Add your comment... "
+                        class="tw-block tw-pl-2 tw-w-full tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 placeholder:tw-text-gray-400 dark:tw-text-gray-400 sm:tw-text-sm sm:tw-leading-6"
+                        :placeholder="__('novaActivity.comment_placeholder')"
                     ></textarea>
                     <div class="tw-py-2" aria-hidden="true">
                         <div class="tw-py-px">
@@ -42,7 +44,6 @@
                     class="tw-absolute tw-inset-x-0 tw-bottom-0 tw-flex tw-justify-between tw-py-2 tw-pl-3 tw-pr-2"
                 >
                     <div class="tw-flex tw-items-center tw-space-x-5">
-                        <!-- <div class="tw-flex tw-items-center">Star</div> -->
                         <div class="tw-flex tw-items-center">
                             <QuickReply :field="field" action="new_comment" />
                         </div>
@@ -66,7 +67,7 @@
                     </div>
                     <div class="tw-flex-shrink-0">
                         <DefaultButton @click="submitComment" type="button">
-                            Post
+                            {{ __("novaActivity.post_comment") }}
                         </DefaultButton>
                     </div>
                 </div>
@@ -123,7 +124,9 @@
                     return "";
                 }
 
-                return moment(this.date).format("Do MMM, YYYY");
+                return moment(this.date)
+                    .locale(this.field.locale)
+                    .format(this.field.date_format);
             },
 
             openDatePicker() {

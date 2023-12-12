@@ -26,9 +26,7 @@
                                 clip-rule="evenodd"
                             />
                         </svg>
-                        <span class="tw-sr-only">Add your mood</span>
                     </span>
-                    <!-- Selected item label, show/hide based on listbox state. -->
                     <span v-if="quick_reply">
                         <span
                             :style="{

@@ -30,7 +30,7 @@
                             tabindex="-1"
                             id="option-menu-item-0"
                         >
-                            Pin activity
+                            {{ __('novaActivity.pin_activity') }}
                         </a>
                         <a
                             v-if="comment.is_pinned"
@@ -41,7 +41,7 @@
                             tabindex="-1"
                             id="option-menu-item-0"
                         >
-                            Un-pin activity
+                            {{ __('novaActivity.unpin_activity') }}
                         </a>
                         <a
                             v-if="comment.comment && !comment.is_hidden"
@@ -52,7 +52,7 @@
                             tabindex="-1"
                             id="option-menu-item-1"
                         >
-                            Hide comment
+                            {{ __('novaActivity.hide_comment') }}
                         </a>
                         <a
                             v-if="comment.comment && comment.is_hidden"
@@ -63,7 +63,7 @@
                             tabindex="-1"
                             id="option-menu-item-1"
                         >
-                            Show comment
+                            {{ __('novaActivity.show_comment') }}
                         </a>
                         <a
                             @click="deleteComment()"
@@ -73,7 +73,7 @@
                             tabindex="-1"
                             id="option-menu-item-2"
                         >
-                            Delete activity
+                            {{ __('novaActivity.delete_activity') }}
                         </a>
                     </div>
                 </div>
