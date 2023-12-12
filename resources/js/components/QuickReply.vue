@@ -115,7 +115,7 @@
 
         methods: {
             reset() {
-                this.quick_reply = '';
+                this.quick_reply = "";
             },
             handleQuickReply(quick_reply) {
                 if (this.action == "new_comment") {

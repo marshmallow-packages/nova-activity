@@ -1,11 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ["./resources/**/*.{js,vue}"],
+    mode: "jit",
+    content: [
+        "./src/**/*.php",
+        "./src/**/*.vue",
+        "./resources/**/*{js,vue,blade.php}",
+    ],
     prefix: "tw-",
     theme: {
         extend: {},
     },
-    plugins: [
-        require('@tailwindcss/forms'),
-    ],
+    darkMode: "class",
+    plugins: [require("@tailwindcss/forms")],
 };

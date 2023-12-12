@@ -25,55 +25,55 @@
                             v-if="!comment.is_pinned"
                             @click="pinComment()"
                             href="javascript:;"
-                            class="tw-text-gray-700 tw-block tw-px-4 tw-py-2 tw-text-sm hover:tw-bg-gray-100 hover:tw-text-gray-900 dark:tw-text-gray-400"
+                            class="tw-text-gray-700 tw-block tw-px-4 tw-py-2 tw-text-sm hover:tw-bg-gray-100 hover:tw-text-gray-900 dark:text-gray-400"
                             role="menuitem"
                             tabindex="-1"
                             id="option-menu-item-0"
                         >
-                            {{ __('novaActivity.pin_activity') }}
+                            {{ __("novaActivity.pin_activity") }}
                         </a>
                         <a
                             v-if="comment.is_pinned"
                             @click="unpinComment()"
                             href="javascript:;"
-                            class="tw-text-gray-700 tw-block tw-px-4 tw-py-2 tw-text-sm hover:tw-bg-gray-100 hover:tw-text-gray-900 dark:tw-text-gray-400"
+                            class="tw-text-gray-700 tw-block tw-px-4 tw-py-2 tw-text-sm hover:tw-bg-gray-100 hover:tw-text-gray-900 dark:text-gray-400"
                             role="menuitem"
                             tabindex="-1"
                             id="option-menu-item-0"
                         >
-                            {{ __('novaActivity.unpin_activity') }}
+                            {{ __("novaActivity.unpin_activity") }}
                         </a>
                         <a
                             v-if="comment.comment && !comment.is_hidden"
                             @click="hideComment()"
                             href="javascript:;"
-                            class="tw-text-gray-700 tw-block tw-px-4 tw-py-2 tw-text-sm hover:tw-bg-gray-100 hover:tw-text-gray-900 dark:tw-text-gray-400"
+                            class="tw-text-gray-700 tw-block tw-px-4 tw-py-2 tw-text-sm hover:tw-bg-gray-100 hover:tw-text-gray-900 dark:text-gray-400"
                             role="menuitem"
                             tabindex="-1"
                             id="option-menu-item-1"
                         >
-                            {{ __('novaActivity.hide_comment') }}
+                            {{ __("novaActivity.hide_comment") }}
                         </a>
                         <a
                             v-if="comment.comment && comment.is_hidden"
                             @click="showComment()"
                             href="javascript:;"
-                            class="tw-text-gray-700 tw-block tw-px-4 tw-py-2 tw-text-sm hover:tw-bg-gray-100 hover:tw-text-gray-900 dark:tw-text-gray-400"
+                            class="tw-text-gray-700 tw-block tw-px-4 tw-py-2 tw-text-sm hover:tw-bg-gray-100 hover:tw-text-gray-900 dark:text-gray-400"
                             role="menuitem"
                             tabindex="-1"
                             id="option-menu-item-1"
                         >
-                            {{ __('novaActivity.show_comment') }}
+                            {{ __("novaActivity.show_comment") }}
                         </a>
                         <a
                             @click="deleteComment()"
                             href="javascript:;"
-                            class="tw-text-gray-700 tw-block tw-px-4 tw-py-2 tw-text-sm hover:tw-bg-gray-100 hover:tw-text-gray-900 dark:tw-text-gray-400"
+                            class="tw-text-gray-700 tw-block tw-px-4 tw-py-2 tw-text-sm hover:tw-bg-gray-100 hover:tw-text-gray-900 dark:text-gray-400"
                             role="menuitem"
                             tabindex="-1"
                             id="option-menu-item-2"
                         >
-                            {{ __('novaActivity.delete_activity') }}
+                            {{ __("novaActivity.delete_activity") }}
                         </a>
                     </div>
                 </div>

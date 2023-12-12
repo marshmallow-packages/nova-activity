@@ -5,12 +5,12 @@
     >
         <h2
             v-if="field.activity_title"
-            class="tw-text-sm tw-font-semibold tw-leading-6 dark:tw-text-gray-400 tw-text-gray-900 tw-mb-6"
+            class="tw-text-sm tw-font-semibold tw-leading-6 dark:text-gray-400 tw-text-gray-900 tw-mb-6"
         >
             {{ field.activity_title }}
         </h2>
         <div
-            class="tw-flex tw-w-full tw-items-center tw-justify-center tw-rounded-md dark:tw-bg-none tw-bg-white tw-px-3 tw-py-2 tw-text-sm tw-font-semibold dark:tw-text-gray-400 tw-text-gray-900 tw-shadow-sm tw-border-b tw-mb-4 tw-cursor-pointer"
+            class="tw-flex tw-w-full tw-items-center tw-justify-center tw-rounded-md dark:tw-bg-none tw-bg-white tw-px-3 tw-py-2 tw-text-sm tw-font-semibold dark:text-gray-400 tw-text-gray-900 tw-shadow-sm tw-border-b tw-mb-4 tw-cursor-pointer"
             v-if="field.limit && comment_history.length > field.limit"
             @click="show_all = !show_all"
         >
