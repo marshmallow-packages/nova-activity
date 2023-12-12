@@ -12,5 +12,7 @@
     "novaActivity.comment_placeholder": "Add your comment...",
     "novaActivity.post_comment": "Post activity",
     "novaActivity.i_feel_nothing": "I feel nothing",
-    "novaActivity.mentions_no_results": "No result"
+    "novaActivity.mentions_no_results": "No result",
+    "novaActivity.open_index_model": "Open activity",
+    "novaActivity.close_index_model": "Close activity"
 }

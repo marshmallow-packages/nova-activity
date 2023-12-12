@@ -210,3 +210,8 @@ $activity = $event->activity;
 $model = $event->activity->novaActivity;
 $user = $event->user;
 ```
+
+```php
+/** Add this so the index button will work. */
+public static $clickAction = 'ignore';
+```

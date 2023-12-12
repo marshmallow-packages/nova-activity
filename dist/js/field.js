@@ -409,11 +409,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _NovaActivityList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NovaActivityList */ "./resources/js/components/NovaActivityList.vue");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['resourceName', 'field'],
-  computed: {
-    fieldValue: function fieldValue() {
-      return this.field.displayedAs || this.field.value;
+  props: ["index", "resource", "resourceName", "resourceId", "field"],
+  components: {
+    NovaActivityList: _NovaActivityList__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      show: false
+    };
+  },
+  created: function created() {
+    console.log(this.field.name);
+  },
+  methods: {
+    closeModel: function closeModel() {
+      this.show = false;
     }
   }
 });
@@ -1113,8 +1126,71 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 
+var _hoisted_1 = {
+  "class": "space-y-6 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800"
+};
+var _hoisted_2 = {
+  "class": "space-y-6"
+};
+var _hoisted_3 = {
+  "class": "tw-p-6"
+};
+var _hoisted_4 = {
+  "class": "flex items-center ml-auto"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.fieldValue), 1 /* TEXT */);
+  var _component_LinkButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("LinkButton");
+  var _component_ModalHeader = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ModalHeader");
+  var _component_NovaActivityList = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("NovaActivityList");
+  var _component_CancelButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CancelButton");
+  var _component_ModalFooter = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ModalFooter");
+  var _component_Modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Modal");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_LinkButton, {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $data.show = true;
+    })
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__('novaActivity.open_index_model')), 1 /* TEXT */)];
+    }),
+    _: 1 /* STABLE */
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Modal, {
+    show: $data.show,
+    onCloseViaEscape: $options.closeModel,
+    role: "dialog",
+    size: "2xl",
+    "modal-style": "window"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ModalHeader, null, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.field.name), 1 /* TEXT */)];
+        }),
+        _: 1 /* STABLE */
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NovaActivityList, {
+        resourceName: $props.resourceName,
+        field: $props.field,
+        resourceId: $props.resource.id.value
+      }, null, 8 /* PROPS */, ["resourceName", "field", "resourceId"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ModalFooter, null, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CancelButton, {
+            component: "button",
+            type: "button",
+            dusk: "cancel-action-button",
+            "class": "ml-auto mr-3",
+            onClick: $options.closeModel
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__('novaActivity.close_index_model')), 1 /* TEXT */)];
+            }),
+            _: 1 /* STABLE */
+          }, 8 /* PROPS */, ["onClick"])])];
+        }),
+        _: 1 /* STABLE */
+      })])];
+    }),
+    _: 1 /* STABLE */
+  }, 8 /* PROPS */, ["show", "onCloseViaEscape"])]);
 }
 
 /***/ }),
