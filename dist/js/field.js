@@ -569,7 +569,7 @@ var _hoisted_2 = {
 };
 var _hoisted_3 = {
   key: 0,
-  "class": "mr-1"
+  "class": "mr-1 group-hover:tw-font-semibold"
 };
 var _hoisted_4 = {
   "class": "tw-text-sm"
@@ -591,7 +591,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_ActivityWithComment = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ActivityWithComment");
   return $data.comment_history && $data.comment_history.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [$props.field.activity_title ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h2", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.field.activity_title), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.field.limit && $data.comment_history.length > $props.field.limit ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 1,
-    "class": "inline-flex items-center px-3 text-gray-500 bg-white border-gray-300 tw-border-b tw-justify-center tw-w-full focus:outline-none focus:ring dark:border-gray-500 hover:border-gray-500 active:border-gray-400 dark:hover:border-gray-400 dark:active:border-gray-300 dark:bg-transparent dark:text-gray-400 h-9 shrink-0 tw-cursor-pointer",
+    "class": "inline-flex items-center px-3 text-gray-500 bg-white border-gray-300 tw-border-b tw-justify-center tw-w-full focus:outline-none focus:ring dark:border-gray-700 hover:border-gray-500 active:border-gray-400 dark:hover:tw-border-gray-500 dark:active:tw-border-gray-600 tw-group dark:bg-transparent dark:text-gray-400 h-9 shrink-0 tw-cursor-pointer",
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $data.show_all = !$data.show_all;
     })
@@ -685,7 +685,7 @@ var _hoisted_1 = {
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "tw-absolute tw-left-0 tw-top-0 tw-flex tw-w-6 tw-justify-center tw--bottom-6"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "tw-w-px tw-bg-gray-200 dark:tw-bg-gray-500"
+  "class": "tw-w-px tw-bg-gray-200 dark:tw-bg-gray-700"
 })], -1 /* HOISTED */);
 var _hoisted_3 = ["src"];
 var _hoisted_4 = {
@@ -693,7 +693,7 @@ var _hoisted_4 = {
   "class": "tw-relative tw-text-center tw-mt-3 tw-h-6 tw-w-6 tw-flex-none tw-rounded-full tw-bg-gray-50"
 };
 var _hoisted_5 = {
-  "class": "tw-flex-auto tw-mt-3 tw-rounded-md tw-p-3 tw-ring-1 tw-ring-inset tw-ring-gray-200 dark:tw-ring-gray-600 dark:tw-bg-gray-800"
+  "class": "tw-flex-auto tw-mt-3 tw-rounded-md tw-p-3 tw-ring-1 tw-ring-inset tw-ring-gray-200 dark:tw-ring-gray-700 dark:tw-bg-gray-700"
 };
 var _hoisted_6 = {
   "class": "tw-flex tw-justify-between tw-gap-x-4"
@@ -800,7 +800,7 @@ var _hoisted_1 = {
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "tw-absolute tw-left-0 tw-top-0 tw-flex tw-w-6 tw-justify-center tw--bottom-6"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "tw-w-px tw-bg-gray-200 dark:tw-bg-gray-500"
+  "class": "tw-w-px tw-bg-gray-200 dark:tw-bg-gray-700"
 })], -1 /* HOISTED */);
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "tw-relative tw-flex tw-h-6 tw-w-6 tw-flex-none tw-items-center tw-justify-center dark:tw-bg-none tw-bg-white"

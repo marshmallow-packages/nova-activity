@@ -11,11 +11,11 @@
         </h2>
 
         <div
-            class="inline-flex items-center px-3 text-gray-500 bg-white border-gray-300 tw-border-b tw-justify-center tw-w-full focus:outline-none focus:ring dark:border-gray-500 hover:border-gray-500 active:border-gray-400 dark:hover:border-gray-400 dark:active:border-gray-300 dark:bg-transparent dark:text-gray-400 h-9 shrink-0 tw-cursor-pointer"
+            class="inline-flex items-center px-3 text-gray-500 bg-white border-gray-300 tw-border-b tw-justify-center tw-w-full focus:outline-none focus:ring dark:border-gray-700 hover:border-gray-500 active:border-gray-400 dark:hover:tw-border-gray-500 dark:active:tw-border-gray-600 tw-group dark:bg-transparent dark:text-gray-400 h-9 shrink-0 tw-cursor-pointer"
             v-if="field.limit && comment_history.length > field.limit"
             @click="show_all = !show_all"
         >
-            <div v-if="!show_all" class="mr-1">
+            <div v-if="!show_all" class="mr-1 group-hover:tw-font-semibold">
                 <span class="tw-text-sm">
                     {{ __("novaActivity.view_all_activity") }}
                 </span>

@@ -3,7 +3,7 @@
         <div
             class="tw-absolute tw-left-0 tw-top-0 tw-flex tw-w-6 tw-justify-center tw--bottom-6"
         >
-            <div class="tw-w-px tw-bg-gray-200 dark:tw-bg-gray-500"></div>
+            <div class="tw-w-px tw-bg-gray-200 dark:tw-bg-gray-700"></div>
         </div>
 
         <img
@@ -19,7 +19,7 @@
             <Icon :width="16" :type="comment.user.icon" :solid="true" />
         </div>
         <div
-            class="tw-flex-auto tw-mt-3 tw-rounded-md tw-p-3 tw-ring-1 tw-ring-inset tw-ring-gray-200 dark:tw-ring-gray-600 dark:tw-bg-gray-800"
+            class="tw-flex-auto tw-mt-3 tw-rounded-md tw-p-3 tw-ring-1 tw-ring-inset tw-ring-gray-200 dark:tw-ring-gray-700 dark:tw-bg-gray-700"
         >
             <div class="tw-flex tw-justify-between tw-gap-x-4">
                 <div
