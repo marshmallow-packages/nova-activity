@@ -3,7 +3,7 @@
         <div
             class="tw-absolute tw-left-0 tw-top-0 tw-flex tw-w-6 tw-justify-center tw--bottom-6"
         >
-            <div class="tw-w-px tw-bg-gray-200"></div>
+            <div class="tw-w-px tw-bg-gray-200 dark:tw-bg-gray-600"></div>
         </div>
 
         <img
