@@ -10,6 +10,7 @@
         <div class="tw-min-w-0 tw-flex-1">
             <div class="tw-relative">
                 <div class="tw-mb-2">
+                    <input name="focus_trap" style="position:absolute;top:-50000px;left:-50000px;" />
                     <model-select
                         :options="comment_types"
                         v-model="type"
@@ -181,7 +182,10 @@
                         : ""
                 );
                 formData.append("type", this.type);
-                formData.append("mentions", JSON.stringify(this.field.mentions));
+                formData.append(
+                    "mentions",
+                    JSON.stringify(this.field.mentions)
+                );
                 formData.append(
                     "type_label",
                     this.field.types[this.type] === undefined
