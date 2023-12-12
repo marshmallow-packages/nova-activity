@@ -28,7 +28,7 @@
                         rows="3"
                         name="comment"
                         id="comment"
-                        class="tw-block tw-pl-2 tw-w-full tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 dark:text-gray-400 placeholder:tw-text-gray-400 sm:tw-text-sm sm:tw-leading-6"
+                        class="tw-block tw-pl-2 tw-w-full tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 dark:tw-text-gray-400 placeholder:tw-text-gray-400 sm:tw-text-sm sm:tw-leading-6"
                         placeholder="Add your comment... "
                     ></textarea>
                     <div class="tw-py-2" aria-hidden="true">

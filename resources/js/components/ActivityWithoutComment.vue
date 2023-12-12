@@ -16,7 +16,7 @@
             class="tw-flex-auto tw-py-0.5 tw-text-xs tw-leading-5 tw-text-gray-500"
         >
             <div
-                class="tw-font-medium dark:text-gray-400 tw-text-gray-900 tw-flex"
+                class="tw-font-medium dark:tw-text-gray-400 tw-text-gray-900 tw-flex"
             >
                 <ActivityStateIcons :comment="comment" />
                 <div>

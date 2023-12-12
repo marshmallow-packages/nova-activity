@@ -27,10 +27,10 @@
                     @click="toggleComment()"
                 >
                     <div
-                        class="tw-font-medium dark:text-gray-400 tw-text-gray-900 tw-flex"
+                        class="tw-font-medium dark:tw-text-gray-400 tw-text-gray-900 tw-flex"
                     >
                         <ActivityStateIcons :comment="comment" />
-                        <div>
+                        <div class="dark:tw-text-gray-300">
                             {{ comment.user.name }}
                             <span class="tw-text-gray-500">{{
                                 comment.type.label
