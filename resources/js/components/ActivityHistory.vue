@@ -1,7 +1,7 @@
 <template>
     <div
         v-if="comment_history && comment_history.length"
-        class="tw-mb-8 tw-mt-2"
+        class="tw-mb-6 tw-mt-2"
     >
         <h2
             v-if="field.activity_title"
@@ -10,13 +10,14 @@
             {{ field.activity_title }}
         </h2>
         <div
-            class="tw-flex tw-w-full tw-items-center tw-justify-center tw-rounded-md dark:tw-bg-none tw-bg-white tw-px-3 tw-py-2 tw-text-sm tw-font-semibold dark:text-gray-400 tw-text-gray-900 tw-shadow-sm tw-border-b tw-mb-4 tw-cursor-pointer"
+            class="inline-flex items-center px-3 font-bold bg-white border rounded tw-justify-center tw-w-full focus:outline-none focus:ring border-primary-300 dark:border-gray-500 hover:border-primary-500 active:border-primary-400 dark:hover:border-gray-400 dark:active:border-gray-300 dark:bg-transparent text-primary-500 dark:text-gray-400 h-9 shrink-0 tw-cursor-pointer"
             v-if="field.limit && comment_history.length > field.limit"
             @click="show_all = !show_all"
         >
             <div v-if="!show_all">
                 {{ __("novaActivity.view_all_activity") }}
-                <span class="tw-text-xs dark:tw-text-gray-500 tw-text-gray-400"
+                <span
+                    class="tw-text-xs tw-cursor-pointer dark:tw-text-gray-500 tw-text-gray-400"
                     >({{
                         __("novaActivity.count_more", {
                             count: comment_history.length - field.limit,

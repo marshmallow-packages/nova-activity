@@ -1,6 +1,6 @@
 <template>
-    <div class="tw-flex tw-items-start tw-space-x-4">
-        <div class="tw-flex-shrink-0">
+    <div class="tw-flex tw-items-start tw-gap-x-4">
+        <div class="tw-flex-shrink-0 -tw-ml-[0.35rem]">
             <img
                 v-if="field.user.avatar"
                 :src="field.user.avatar"
@@ -11,6 +11,7 @@
             <div class="tw-relative">
                 <div class="tw-mb-2">
                     <model-select
+                        class="block w-full form-control form-select form-select-multiple"
                         :options="comment_types"
                         v-model="type"
                         id="type"
