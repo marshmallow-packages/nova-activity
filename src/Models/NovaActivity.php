@@ -3,6 +3,7 @@
 namespace Marshmallow\NovaActivity\Models;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Marshmallow\NovaActivity\Activity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -37,6 +38,26 @@ class NovaActivity extends Model
         return collect(Arr::get($this->meta, 'quick_replies', []))->reject(function ($icon, $quick_reply_user) use ($user) {
             return $quick_reply_user == "user_{$user?->id}";
         })->toArray();
+    }
+
+    public function hasMentions(): bool
+    {
+        return is_array($this->mentions) && !empty($this->mentions);
+    }
+
+    public function getMentions(): ?Collection
+    {
+        if (!$this->hasMentions()) {
+            return null;
+        }
+
+        $collection = collect();
+        collect($this->mentions)->each(function ($mention) use (&$collection) {
+            $class = Arr::get($mention, 'class');
+            $model = $class::find(Arr::get($mention, 'key'));
+            $collection->push($model);
+        });
+        return $collection;
     }
 
     public function user()

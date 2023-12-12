@@ -115,6 +115,13 @@ public function avatarPath()
         })->toArray();
     },
 )
+
+/** Check if this activity has any mentions. */
+$activity->hasMentions();
+
+/** Get a collection of all the classes that where mentioned. */
+$activity->getMentions();
+
 ```
 
 ```php
@@ -133,4 +140,23 @@ protected $listen = [
         DoWhatEver::class
     ],
 ];
+
+// Listeners
+class DoWhatEver
+{
+    public function handle($event)
+    {
+        /** Get the model on which the activity was created. */
+        $event->model;
+
+        /** Get the created activity. */
+        $event->activity;
+
+        /** Check if this activity has any mentions. */
+        $event->activity->hasMentions();
+
+        /** Get a collection of all the classes that where mentioned. */
+        $event->activity->getMentions();
+    }
+}
 ```
