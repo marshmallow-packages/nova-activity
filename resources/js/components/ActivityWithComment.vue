@@ -1,36 +1,38 @@
 <template>
-    <li class="tw-relative tw-flex tw-gap-x-4">
+    <li v-if="!hidden" class="tw-relative tw-flex tw-gap-x-4">
         <div
             class="tw-absolute tw-left-0 tw-top-0 tw-flex tw-w-6 tw-justify-center tw--bottom-6"
         >
             <div class="tw-w-px tw-bg-gray-200"></div>
         </div>
 
-        <img v-if="comment.user.avatar"
+        <img
+            v-if="comment.user.avatar"
             :src="comment.user.avatar"
             alt=""
             class="tw-relative tw-mt-3 tw-h-6 tw-w-6 tw-flex-none tw-rounded-full tw-bg-gray-50"
         />
-        <div v-if="!comment.user.avatar && comment.user.icon" class="tw-relative tw-text-center tw-mt-3 tw-h-6 tw-w-6 tw-flex-none tw-rounded-full tw-bg-gray-50">
-            <Icon
-                :width="16"
-                :type="comment.user.icon"
-                :solid="true"
-            />
+        <div
+            v-if="!comment.user.avatar && comment.user.icon"
+            class="tw-relative tw-text-center tw-mt-3 tw-h-6 tw-w-6 tw-flex-none tw-rounded-full tw-bg-gray-50"
+        >
+            <Icon :width="16" :type="comment.user.icon" :solid="true" />
         </div>
         <div
             class="tw-flex-auto tw-rounded-md tw-p-3 tw-ring-1 tw-ring-inset tw-ring-gray-200"
         >
-            <div
-                class="tw-flex tw-justify-between tw-gap-x-4"
-            >
-                <div class="tw-py-0.5 tw-cursor-pointer tw-text-xs tw-leading-5 tw-text-gray-500" @click="toggleComment()">
+            <div class="tw-flex tw-justify-between tw-gap-x-4">
+                <div
+                    class="tw-py-0.5 tw-cursor-pointer tw-text-xs tw-leading-5 tw-text-gray-500"
+                    @click="toggleComment()"
+                >
                     <div class="tw-font-medium tw-text-gray-900 tw-flex">
-                        <ActivityStateIcons
-                            :comment="comment"/>
+                        <ActivityStateIcons :comment="comment" />
                         <div>
                             {{ comment.user.name }}
-                            <span class="tw-text-gray-500">{{ comment.type.label }}</span>
+                            <span class="tw-text-gray-500">{{
+                                comment.type.label
+                            }}</span>
                         </div>
                     </div>
                 </div>
@@ -110,7 +112,7 @@
     import ActivityStateIcons from "./ActivityStateIcons";
 
     export default {
-        props: ["resourceName", "resourceId", "field", "comment"],
+        props: ["resourceName", "resourceId", "field", "comment", "hidden"],
 
         components: { QuickReply, ActiviyActions, ActivityStateIcons },
 
@@ -120,8 +122,9 @@
             };
         },
 
-        created () {
-            this.show_comment = this.comment.is_pinned;
+        created() {
+            this.show_comment =
+                this.comment.is_pinned || this.field.always_show_comments;
         },
 
         methods: {

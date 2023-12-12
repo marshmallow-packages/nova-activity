@@ -1,5 +1,5 @@
 <template>
-    <li class="tw-relative tw-flex tw-gap-x-4">
+    <li v-if="!hidden" class="tw-relative tw-flex tw-gap-x-4">
         <div
             class="tw-absolute tw-left-0 tw-top-0 tw-flex tw-w-6 tw-justify-center tw--bottom-6"
         >
@@ -16,11 +16,12 @@
             class="tw-flex-auto tw-py-0.5 tw-text-xs tw-leading-5 tw-text-gray-500"
         >
             <div class="tw-font-medium tw-text-gray-900 tw-flex">
-                <ActivityStateIcons
-                    :comment="comment"/>
+                <ActivityStateIcons :comment="comment" />
                 <div>
                     {{ comment.user.name }}
-                    <span class="tw-text-gray-500">{{ comment.type.label }}</span>
+                    <span class="tw-text-gray-500">{{
+                        comment.type.label
+                    }}</span>
                 </div>
             </div>
         </div>
@@ -37,7 +38,7 @@
     import ActiviyActions from "./ActiviyActions";
     import ActivityStateIcons from "./ActivityStateIcons";
     export default {
-        props: ["resourceName", "resourceId", "field", "comment"],
+        props: ["resourceName", "resourceId", "field", "comment", "hidden"],
 
         components: { ActiviyActions, ActivityStateIcons },
     };

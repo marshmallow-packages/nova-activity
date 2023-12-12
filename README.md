@@ -71,3 +71,8 @@ public function avatarPath()
     return [
         2 => 'Klant gebel
 ```
+
+```php
+->limit(3)
+->alwaysShowComments()
+```

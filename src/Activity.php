@@ -49,6 +49,20 @@ class Activity extends Field
         ]);
     }
 
+    public function limit(int $limit)
+    {
+        return $this->withMeta([
+            'limit' => $limit,
+        ]);
+    }
+
+    public function alwaysShowComments()
+    {
+        return $this->withMeta([
+            'always_show_comments' => true,
+        ]);
+    }
+
     public function addCurrentUser(): self
     {
         $user = auth()->user();

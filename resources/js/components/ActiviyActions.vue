@@ -93,7 +93,6 @@
         },
 
         created() {
-            console.log(this.comment);
             document.addEventListener("click", this.dropdown);
         },
         destroyed() {

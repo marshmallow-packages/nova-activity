@@ -144,7 +144,6 @@
             if (this.size) {
                 this.icon_size_class = this.size;
             }
-            console.log(this.icon_size_class);
             this.quick_reply = this.current_value;
         },
 
