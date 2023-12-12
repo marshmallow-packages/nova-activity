@@ -91,7 +91,7 @@
                 let self = this;
                 Nova.request()
                     .get(
-                        `/nova-vendor/nova-activity/${this.resourceName}/${this.resourceId}/get-comments`
+                        `/nova-vendor/nova-activity/${this.resourceName}/${this.resourceId}/get-activity`
                     )
                     .then(
                         (response) => {

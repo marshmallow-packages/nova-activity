@@ -1,70 +1,12 @@
 <?php
 
-use Carbon\Carbon;
-use Laravel\Nova\Nova;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Laravel\Nova\Notifications\NovaNotification;
-use Marshmallow\NovaActivity\Models\NovaActivity;
-use Marshmallow\NovaActivity\Resources\NovaActivityCollection;
+use Marshmallow\NovaActivity\Http\Controllers\RunActionController;
+use Marshmallow\NovaActivity\Http\Controllers\GetActivityController;
+use Marshmallow\NovaActivity\Http\Controllers\SetQuickReplyController;
+use Marshmallow\NovaActivity\Http\Controllers\CreateActivityController;
 
-Route::get('/{resourceName}/{resourceId}/get-comments', function ($resourceName, $resourceId, Request $request) {
-    $resource = Nova::resourceForKey($resourceName);
-    $model = $resource::newModel()->findOrFail($resourceId);
-    return new NovaActivityCollection(
-        $model->novaActivity
-    );
-});
-
-Route::post('/{comment_id}/set-quick-reply', function ($comment_id, Request $request) {
-    $comment = NovaActivity::find($comment_id);
-    $meta = $comment->meta;
-    $meta['quick_replies']['user_' . $request->user()->id] = $request->quick_reply;
-    $comment->update([
-        'meta' => $meta,
-    ]);
-});
-
-Route::post('/{comment_id}/run-action', function ($comment_id, Request $request) {
-    $comment = NovaActivity::find($comment_id);
-    $comment->runAction($request->action);
-});
-
-Route::post('/{resourceName}/{resourceId}', function ($resourceName, $resourceId, Request $request) {
-
-    $resource = Nova::resourceForKey($resourceName);
-    $model = $resource::newModel()->findOrFail($resourceId);
-
-    try {
-
-        $comment_validation = config('nova-activity.comment_validation');
-        if ($comment_validation && !empty($comment_validation)) {
-            $request->validate($comment_validation);
-        }
-
-        $quick_replies = $request->quick_reply ? [
-            'user_' . $request->user()->id => $request->quick_reply,
-        ] : [];
-
-        $model->addActivity(
-            user_id: $request->user()->id,
-            type: $request->type,
-            label: $request->type_label,
-            comment: $request->comment,
-            created_at: Carbon::parse($request->date)->setTimeFromTimeString(
-                now()->format('H:i:s')
-            ),
-            quick_replies: $quick_replies,
-        );
-
-        return [
-            'success' => true,
-            'message' => __('Comment is created successfully'),
-        ];
-    } catch (Exception $exception) {
-        return [
-            'success' => false,
-            'message' => $exception->getMessage(),
-        ];
-    }
-});
+Route::post('/{comment_id}/run-action', RunActionController::class);
+Route::post('/{resourceName}/{resourceId}', CreateActivityController::class);
+Route::post('/{comment_id}/set-quick-reply', SetQuickReplyController::class);
+Route::get('/{resourceName}/{resourceId}/get-activity', GetActivityController::class);

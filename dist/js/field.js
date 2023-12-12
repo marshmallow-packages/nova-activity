@@ -34,7 +34,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     loadCommentHistory: function loadCommentHistory() {
       var self = this;
-      Nova.request().get("/nova-vendor/nova-activity/".concat(this.resourceName, "/").concat(this.resourceId, "/get-comments")).then(function (response) {
+      Nova.request().get("/nova-vendor/nova-activity/".concat(this.resourceName, "/").concat(this.resourceId, "/get-activity")).then(function (response) {
         self.comment_history = response.data.data;
       }, function (response) {
         Nova.error(response);
