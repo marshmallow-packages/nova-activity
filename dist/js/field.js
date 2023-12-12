@@ -568,30 +568,38 @@ var _hoisted_2 = {
   "class": "tw-text-sm tw-font-semibold tw-leading-6 dark:text-gray-400 tw-text-gray-900 tw-mb-6"
 };
 var _hoisted_3 = {
-  key: 0
+  key: 0,
+  "class": "mr-1"
 };
 var _hoisted_4 = {
-  "class": "tw-text-xs tw-cursor-pointer dark:tw-text-gray-500 tw-text-gray-400"
+  "class": "tw-text-sm"
 };
 var _hoisted_5 = {
-  key: 1
+  "class": "tw-text-xs tw-ml-0.5 tw-cursor-pointer dark:tw-text-gray-500 tw-text-gray-400"
 };
 var _hoisted_6 = {
+  key: 1,
+  "class": "mr-1"
+};
+var _hoisted_7 = {
   role: "list",
   "class": "tw-space-y-6 js-history-list"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_CollapseButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CollapseButton");
   var _component_ActivityWithoutComment = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ActivityWithoutComment");
   var _component_ActivityWithComment = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ActivityWithComment");
   return $data.comment_history && $data.comment_history.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [$props.field.activity_title ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h2", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.field.activity_title), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.field.limit && $data.comment_history.length > $props.field.limit ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 1,
-    "class": "inline-flex items-center px-3 font-bold bg-white border rounded tw-justify-center tw-w-full focus:outline-none focus:ring border-primary-300 dark:border-gray-500 hover:border-primary-500 active:border-primary-400 dark:hover:border-gray-400 dark:active:border-gray-300 dark:bg-transparent text-primary-500 dark:text-gray-400 h-9 shrink-0 tw-cursor-pointer",
+    "class": "inline-flex items-center px-3 text-gray-500 bg-white border-gray-300 tw-border-b tw-justify-center tw-w-full focus:outline-none focus:ring dark:border-gray-500 hover:border-gray-500 active:border-gray-400 dark:hover:border-gray-400 dark:active:border-gray-300 dark:bg-transparent dark:text-gray-400 h-9 shrink-0 tw-cursor-pointer",
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $data.show_all = !$data.show_all;
     })
-  }, [!$data.show_all ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("novaActivity.view_all_activity")) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_4, "(" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("novaActivity.count_more", {
+  }, [!$data.show_all ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("novaActivity.view_all_activity")), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, "(" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("novaActivity.count_more", {
     count: $data.comment_history.length - $props.field.limit
-  })) + ")", 1 /* TEXT */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.show_all ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("novaActivity.only_show_latests")), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_6, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.comment_history, function (comment_history_item, index) {
+  })) + ")", 1 /* TEXT */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.show_all ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("novaActivity.only_show_latests")), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CollapseButton, {
+    collapsed: $data.show_all
+  }, null, 8 /* PROPS */, ["collapsed"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.comment_history, function (comment_history_item, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [!comment_history_item.comment || comment_history_item.is_hidden ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_ActivityWithoutComment, {
       key: comment_history_item.id,
       hidden: $props.field.limit && !$data.show_all && index < $data.comment_history.length - $props.field.limit,

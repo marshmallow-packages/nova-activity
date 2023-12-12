@@ -55,6 +55,12 @@
 .tw-mb-6 {
     margin-bottom: 1.5rem
 }
+.tw-ml-0 {
+    margin-left: 0px
+}
+.tw-ml-0\.5 {
+    margin-left: 0.125rem
+}
 .tw-ml-3 {
     margin-left: 0.75rem
 }
@@ -238,6 +244,9 @@
 }
 .tw-border-0 {
     border-width: 0px
+}
+.tw-border-b {
+    border-bottom-width: 1px
 }
 .tw-bg-gray-100 {
     --tw-bg-opacity: 1;
