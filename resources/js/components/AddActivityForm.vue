@@ -10,7 +10,14 @@
         <div class="tw-min-w-0 tw-flex-1">
             <div class="tw-relative">
                 <div class="tw-mb-2">
-                    <input name="focus_trap" style="position:absolute;top:-50000px;left:-50000px;" />
+                    <input
+                        name="focus_trap"
+                        style="
+                            position: absolute;
+                            top: -50000px;
+                            left: -50000px;
+                        "
+                    />
                     <model-select
                         class="block w-full form-control form-select form-select-multiple"
                         :options="comment_types"
@@ -25,14 +32,14 @@
                 </div>
 
                 <div
-                    class="tw-overflow-hidden tw-rounded-lg tw-shadow-sm tw-ring-1 tw-ring-inset tw-ring-gray-300"
+                    class="tw-overflow-hidden dark:tw-border-gray-700 dark:tw-ring-gray-700 dark:focus:tw-bg-gray-900 dark:tw-bg-gray-900 tw-rounded-lg trix-editor tw-shadow-sm tw-ring-1 tw-ring-inset tw-ring-gray-300"
                 >
                     <trix-editor
                         v-if="field.use_comments"
                         rows="3"
                         name="comment"
                         id="comment"
-                        class="tw-block tw-pl-2 tw-w-full tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 placeholder:tw-text-gray-400 dark:text-gray-400 sm:tw-text-sm sm:tw-leading-6"
+                        class="tw-block tw-ml-px tw-pl-2 tw-w-[99%] mx-auto tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 placeholder:tw-text-gray-400 dark:text-gray-400 sm:tw-text-sm sm:tw-leading-6"
                         :placeholder="__('novaActivity.comment_placeholder')"
                     ></trix-editor>
 

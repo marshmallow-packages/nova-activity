@@ -974,7 +974,7 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   }
 }, null, -1 /* HOISTED */);
 var _hoisted_8 = {
-  "class": "tw-overflow-hidden tw-rounded-lg tw-shadow-sm tw-ring-1 tw-ring-inset tw-ring-gray-300"
+  "class": "tw-overflow-hidden dark:tw-border-gray-700 dark:tw-ring-gray-700 dark:focus:tw-bg-gray-900 dark:tw-bg-gray-900 tw-rounded-lg trix-editor tw-shadow-sm tw-ring-1 tw-ring-inset tw-ring-gray-300"
 };
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "tw-py-2",
@@ -1026,7 +1026,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     rows: "3",
     name: "comment",
     id: "comment",
-    "class": "tw-block tw-pl-2 tw-w-full tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 placeholder:tw-text-gray-400 dark:text-gray-400 sm:tw-text-sm sm:tw-leading-6",
+    "class": "tw-block tw-ml-px tw-pl-2 tw-w-[99%] mx-auto tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 placeholder:tw-text-gray-400 dark:text-gray-400 sm:tw-text-sm sm:tw-leading-6",
     placeholder: _ctx.__('novaActivity.comment_placeholder')
   }, null, 8 /* PROPS */, ["placeholder"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_9]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_QuickReply, {
     field: $props.field,

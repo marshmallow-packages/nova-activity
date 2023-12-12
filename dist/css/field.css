@@ -64,6 +64,9 @@
 .tw-ml-3 {
     margin-left: 0.75rem
 }
+.tw-ml-px {
+    margin-left: 1px
+}
 .tw-mr-2 {
     margin-right: 0.5rem
 }
@@ -141,6 +144,9 @@
 }
 .tw-w-8 {
     width: 2rem
+}
+.tw-w-\[99\%\] {
+    width: 99%
 }
 .tw-w-full {
     width: 100%
@@ -448,9 +454,17 @@
     outline: 2px solid transparent;
     outline-offset: 2px
 }
+:is(.tw-dark .dark\:tw-border-gray-700) {
+    --tw-border-opacity: 1;
+    border-color: rgb(55 65 81 / var(--tw-border-opacity))
+}
 :is(.tw-dark .dark\:tw-bg-gray-500) {
     --tw-bg-opacity: 1;
     background-color: rgb(107 114 128 / var(--tw-bg-opacity))
+}
+:is(.tw-dark .dark\:tw-bg-gray-900) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(17 24 39 / var(--tw-bg-opacity))
 }
 :is(.tw-dark .dark\:tw-bg-none) {
     background-image: none
@@ -470,6 +484,14 @@
 :is(.tw-dark .dark\:tw-ring-gray-600) {
     --tw-ring-opacity: 1;
     --tw-ring-color: rgb(75 85 99 / var(--tw-ring-opacity))
+}
+:is(.tw-dark .dark\:tw-ring-gray-700) {
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(55 65 81 / var(--tw-ring-opacity))
+}
+:is(.tw-dark .dark\:focus\:tw-bg-gray-900:focus) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(17 24 39 / var(--tw-bg-opacity))
 }
 @media (min-width: 640px) {
     .sm\:tw-ml-auto {
