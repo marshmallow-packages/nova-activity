@@ -80,3 +80,16 @@ public function avatarPath()
 ->limit(3)
 ->alwaysShowComments()
 ```
+
+```php
+// momentjs format
+->dateFormat('DD MMM YYYY')
+```
+
+```php
+// momentjs format
+->setLocale('nl')
+->setLocale(function () {
+    return auth()->user()->locale;
+})
+```

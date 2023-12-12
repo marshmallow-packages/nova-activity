@@ -67,7 +67,7 @@
                     </div>
                     <div class="tw-flex-shrink-0">
                         <DefaultButton @click="submitComment" type="button">
-                            {{ __('novaActivity.post_comment') }}
+                            {{ __("novaActivity.post_comment") }}
                         </DefaultButton>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                     return "";
                 }
 
-                return moment(this.date).format("Do MMM, YYYY");
+                return moment(this.date).locale(this.field.locale).format(this.field.date_format);
             },
 
             openDatePicker() {

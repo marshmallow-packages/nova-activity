@@ -20,6 +20,8 @@ class Activity extends Field
         parent::__construct(...$params);
         $this->quickReplies()
             ->addCurrentUser()
+            ->setLocale(config('app.locale'))
+            ->dateFormat('Do MMM, YYYY')
             ->activityTitle(__('novaActivity.title'))
             ->fillUsing(function () {
                 //
@@ -53,6 +55,21 @@ class Activity extends Field
     {
         return $this->withMeta([
             'limit' => $limit,
+        ]);
+    }
+
+    public function setLocale(string|callable $locale)
+    {
+        $locale = is_callable($locale) ? $locale() : $locale;
+        return $this->withMeta([
+            'locale' => $locale,
+        ]);
+    }
+
+    public function dateFormat(string $date_format)
+    {
+        return $this->withMeta([
+            'date_format' => $date_format,
         ]);
     }
 
