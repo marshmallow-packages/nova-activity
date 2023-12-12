@@ -160,3 +160,53 @@ class DoWhatEver
     }
 }
 ```
+
+## Events
+
+```php
+$event = ActivityCreated::class;
+$activity = $event->activity;
+$model = $event->activity->novaActivity;
+```
+
+```php
+$event = QuickReplyChanged::class;
+$activity = $event->activity;
+$model = $event->activity->novaActivity;
+$user = $event->user;
+```
+
+```php
+$event = ActivityPinned::class;
+$activity = $event->activity;
+$model = $event->activity->novaActivity;
+$user = $event->user;
+```
+
+```php
+$event = ActivityUnpinned::class;
+$activity = $event->activity;
+$model = $event->activity->novaActivity;
+$user = $event->user;
+```
+
+```php
+$event = ActivityCommentHidden::class;
+$activity = $event->activity;
+$model = $event->activity->novaActivity;
+$user = $event->user;
+```
+
+```php
+$event = ActivityCommentShow::class;
+$activity = $event->activity;
+$model = $event->activity->novaActivity;
+$user = $event->user;
+```
+
+```php
+$event = ActivityDeleted::class;
+$activity = $event->activity;
+$model = $event->activity->novaActivity;
+$user = $event->user;
+```

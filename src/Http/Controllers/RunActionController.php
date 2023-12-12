@@ -7,9 +7,9 @@ use Marshmallow\NovaActivity\Models\NovaActivity;
 
 class RunActionController
 {
-    public function __invoke($comment_id, Request $request)
+    public function __invoke($activity_id, Request $request)
     {
-        $comment = NovaActivity::find($comment_id);
+        $comment = NovaActivity::find($activity_id);
         $comment->runAction($request->action);
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Marshmallow\NovaActivity\Models\NovaActivity;
 
-class ActivityCreated
+class ActivityCommentHidden
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -17,7 +17,7 @@ class ActivityCreated
      *
      * @return void
      */
-    public function __construct(public NovaActivity $activity)
+    public function __construct(public NovaActivity $activity, public ?Model $user)
     {
         //
     }

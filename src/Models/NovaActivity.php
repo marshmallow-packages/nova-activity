@@ -7,6 +7,11 @@ use Illuminate\Support\Collection;
 use Marshmallow\NovaActivity\Activity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Marshmallow\NovaActivity\Events\ActivityPinned;
+use Marshmallow\NovaActivity\Events\ActivityDeleted;
+use Marshmallow\NovaActivity\Events\ActivityUnpinned;
+use Marshmallow\NovaActivity\Events\ActivityCommentShow;
+use Marshmallow\NovaActivity\Events\ActivityCommentHidden;
 
 class NovaActivity extends Model
 {
@@ -23,14 +28,35 @@ class NovaActivity extends Model
 
     public function runAction(string $action)
     {
-        return match ($action) {
-            'pin' => $this->update(['is_pinned' => true]),
-            'unpin' => $this->update(['is_pinned' => false]),
-            'hide' => $this->update(['is_hidden' => true]),
-            'show' => $this->update(['is_hidden' => false]),
-            'delete' => $this->delete(),
+        $action = match ($action) {
+            'pin' => function () {
+                $this->update(['is_pinned' => true]);
+                event(new ActivityPinned($this, auth()?->user()));
+            },
+            'unpin' => function () {
+                $this->update(['is_pinned' => false]);
+                event(new ActivityUnpinned($this, auth()?->user()));
+            },
+            'hide' => function () {
+                $this->update(['is_hidden' => true]);
+                event(new ActivityCommentHidden($this, auth()?->user()));
+            },
+            'show' => function () {
+                $this->update(['is_hidden' => false]);
+                event(new ActivityCommentShow($this, auth()?->user()));
+            },
+            'delete' => function () {
+                $this->delete();
+                event(new ActivityDeleted($this, auth()?->user()));
+            },
         };
+
+        return $action();
     }
+
+    //
+
+    // event(new QuickReplyChanged($activity, $request->user()));
 
     public function getOtherQuickReplies()
     {

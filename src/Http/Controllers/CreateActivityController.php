@@ -50,7 +50,7 @@ class CreateActivityController
                 mentions: $mention_data,
             );
 
-            event(new ActivityCreated($model, $activity));
+            event(new ActivityCreated($activity));
 
             return [
                 'success' => true,
