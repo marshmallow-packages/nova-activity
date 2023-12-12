@@ -48,7 +48,15 @@ $model->addActivity(
     created_at: Carbon::parse($request->date)->setTimeFromTimeString(
         now()->format('H:i:s')
     ),
-    quick_replies: $quick_replies,
+    quick_replies: [
+        'user_1' => 'sad',
+    ],
+    mentions: [
+        [
+            'key' => 1,
+            'class' => User::class,
+        ]
+    ]
 );
 ```
 
