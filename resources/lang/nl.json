@@ -11,5 +11,6 @@
     "novaActivity.select_comment_type_placeholder": "Selecteer een type...",
     "novaActivity.comment_placeholder": "Schrijf hier een opmerking...",
     "novaActivity.post_comment": "Plaats activiteit",
-    "novaActivity.i_feel_nothing": "Verwijder mijn gevoel"
+    "novaActivity.i_feel_nothing": "Verwijder mijn gevoel",
+    "novaActivity.mentions_no_results": "Geen resultaten"
 }

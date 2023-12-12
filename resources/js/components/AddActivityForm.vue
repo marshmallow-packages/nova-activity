@@ -25,14 +25,14 @@
                 <div
                     class="tw-overflow-hidden tw-rounded-lg tw-shadow-sm tw-ring-1 tw-ring-inset tw-ring-gray-300"
                 >
-                    <textarea
-                        v-model="comment"
+                    <trix-editor
                         rows="3"
                         name="comment"
                         id="comment"
                         class="tw-block tw-pl-2 tw-w-full tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 placeholder:tw-text-gray-400 dark:tw-text-gray-400 sm:tw-text-sm sm:tw-leading-6"
                         :placeholder="__('novaActivity.comment_placeholder')"
-                    ></textarea>
+                    ></trix-editor>
+
                     <div class="tw-py-2" aria-hidden="true">
                         <div class="tw-py-px">
                             <div class="tw-h-9"></div>
@@ -45,7 +45,11 @@
                 >
                     <div class="tw-flex tw-items-center tw-space-x-5">
                         <div class="tw-flex tw-items-center">
-                            <QuickReply :field="field" action="new_comment" />
+                            <QuickReply
+                                :field="field"
+                                action="new_comment"
+                                ref="createQuickReply"
+                            />
                         </div>
                         <div class="tw-flex tw-items-center">
                             <div
@@ -77,11 +81,12 @@
 </template>
 
 <script>
-    import "vue-search-select/dist/VueSearchSelect.css";
     import moment from "moment";
-    import { ModelSelect } from "vue-search-select";
+    import Tribute from "tributejs";
     import QuickReply from "./QuickReply";
+    import { ModelSelect } from "vue-search-select";
     import ActivityHistory from "./ActivityHistory";
+    import "vue-search-select/dist/VueSearchSelect.css";
     import { FormField, HandlesValidationErrors } from "laravel-nova";
 
     export default {
@@ -95,15 +100,38 @@
             return {
                 date: "",
                 type: "",
-                comment: "",
                 quick_reply: "",
-                show_comments: [],
                 comment_types: [],
-                item: "",
-                input: "",
             };
         },
 
+        mounted() {
+            if (this.field.mentions) {
+
+                var tribute = new Tribute({
+                    values: this.field.mentions.users,
+                    selectTemplate: function (item) {
+                        return "<strong>@" + item.original.value + "</strong>";
+                    },
+                    menuItemTemplate: function (item) {
+                        return (
+                            '<img src="' +
+                            item.original.avatar_url +
+                            '">' +
+                            item.string
+                        );
+                    },
+                });
+                tribute.attach(document.getElementById("comment"));
+                var editor = document.getElementById("comment").editor;
+                if (editor != null) {
+                    editor.composition.delegate.inputController.events.keypress =
+                        function () {};
+                    editor.composition.delegate.inputController.events.keydown =
+                        function () {};
+                }
+            }
+        },
         created() {
             this.date = this.moment(new Date()).format("YYYY-MM-DD");
 
@@ -142,10 +170,14 @@
             submitComment() {
                 let self = this;
                 let formData = new FormData();
+
                 formData.append("resource_name", this.resourceName);
                 formData.append("resource_id", this.resourceId);
                 formData.append("date", this.date);
-                formData.append("comment", this.comment);
+                formData.append(
+                    "comment",
+                    document.getElementById("comment").value
+                );
                 formData.append("type", this.type);
                 formData.append(
                     "type_label",
@@ -185,6 +217,8 @@
                 this.type = "";
                 this.comment = "";
                 this.quick_reply = "";
+                this.$refs.createQuickReply.reset();
+                document.getElementById("comment").editor.loadHTML("");
                 this.date = this.moment(new Date()).format("YYYY-MM-DD");
             },
         },

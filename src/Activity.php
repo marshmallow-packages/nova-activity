@@ -58,6 +58,16 @@ class Activity extends Field
         ]);
     }
 
+    public function mentions(array|callable $users)
+    {
+        $users = is_callable($users) ? $users() : $users;
+        return $this->withMeta([
+            'mentions' => [
+                'users' => $users,
+            ],
+        ]);
+    }
+
     public function setLocale(string|callable $locale)
     {
         $locale = is_callable($locale) ? $locale() : $locale;
