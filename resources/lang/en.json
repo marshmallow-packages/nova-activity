@@ -1,0 +1,13 @@
+{
+    "novaActivity.view_all_activity": "View all activity",
+    "novaActivity.count_more": ":count more",
+    "novaActivity.only_show_latests": "Only show the latests",
+    "novaActivity.pin_activity": "Pin activity",
+    "novaActivity.unpin_activity": "Un-pin activity",
+    "novaActivity.hide_comment": "Hide comment",
+    "novaActivity.show_comment": "Show comment",
+    "novaActivity.delete_activity": "Delete activity",
+    "novaActivity.select_comment_type_placeholder": "Select your comment type...",
+    "novaActivity.comment_placeholder": "Add your comment...",
+    "novaActivity.post_comment": "Post activity"
+}

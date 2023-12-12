@@ -59,7 +59,7 @@ Route::post('/{resourceName}/{resourceId}', function ($resourceName, $resourceId
 
         return [
             'success' => true,
-            'message' => 'Comment is created successfully',
+            'message' => __('Comment is created successfully'),
         ];
     } catch (Exception $exception) {
         return [

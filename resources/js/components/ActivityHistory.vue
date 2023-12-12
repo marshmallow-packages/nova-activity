@@ -15,10 +15,16 @@
             @click="show_all = !show_all"
         >
             <div v-if="!show_all">
-                View all activity
-                <span class="tw-text-xs tw-text-gray-400">({{ comment_history.length - field.limit }} more)</span>
+                {{ __("novaActivity.view_all_activity") }}
+                <span class="tw-text-xs tw-text-gray-400"
+                    >({{
+                        __("novaActivity.count_more", {
+                            count: comment_history.length - field.limit,
+                        })
+                    }})</span
+                >
             </div>
-            <div v-if="show_all">Only show the latests</div>
+            <div v-if="show_all">{{ __("novaActivity.only_show_latests") }}</div>
         </div>
         <ul role="list" class="tw-space-y-6 js-history-list">
             <template v-for="(comment_history_item, index) in comment_history">

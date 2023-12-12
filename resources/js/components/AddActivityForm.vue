@@ -15,7 +15,9 @@
                         v-model="type"
                         id="type"
                         name="type"
-                        placeholder="Select your comment type..."
+                        :placeholder="
+                            __('novaActivity.select_comment_type_placeholder')
+                        "
                     >
                     </model-select>
                 </div>
@@ -29,7 +31,7 @@
                         name="comment"
                         id="comment"
                         class="tw-block tw-pl-2 tw-w-full tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 placeholder:tw-text-gray-400 sm:tw-text-sm sm:tw-leading-6"
-                        placeholder="Add your comment... "
+                        :placeholder="__('novaActivity.comment_placeholder')"
                     ></textarea>
                     <div class="tw-py-2" aria-hidden="true">
                         <div class="tw-py-px">
@@ -42,12 +44,8 @@
                     class="tw-absolute tw-inset-x-0 tw-bottom-0 tw-flex tw-justify-between tw-py-2 tw-pl-3 tw-pr-2"
                 >
                     <div class="tw-flex tw-items-center tw-space-x-5">
-                        <!-- <div class="tw-flex tw-items-center">Star</div> -->
                         <div class="tw-flex tw-items-center">
-                            <QuickReply
-                                :field="field"
-                                action="new_comment"
-                            />
+                            <QuickReply :field="field" action="new_comment" />
                         </div>
                         <div class="tw-flex tw-items-center">
                             <div
@@ -69,7 +67,7 @@
                     </div>
                     <div class="tw-flex-shrink-0">
                         <DefaultButton @click="submitComment" type="button">
-                            Post
+                            {{ __('novaActivity.post_comment') }}
                         </DefaultButton>
                     </div>
                 </div>
@@ -147,7 +145,12 @@
                 formData.append("date", this.date);
                 formData.append("comment", this.comment);
                 formData.append("type", this.type);
-                formData.append("type_label", this.field.types[this.type] === undefined ? '' : this.field.types[this.type]);
+                formData.append(
+                    "type_label",
+                    this.field.types[this.type] === undefined
+                        ? ""
+                        : this.field.types[this.type]
+                );
                 formData.append("quick_reply", this.quick_reply);
 
                 return Nova.request()

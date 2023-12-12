@@ -10,6 +10,10 @@ php artisan vendor:publish --tag="nova-activity-config"
 php artisan vendor:publish --tag="nova-activity-migrations"
 ```
 
+```bash
+php artisan vendor:publish --tag="nova-activiy-translations"
+```
+
 ```php
 // Model
 use Marshmallow\NovaActivity\Traits\NovaActivities;
