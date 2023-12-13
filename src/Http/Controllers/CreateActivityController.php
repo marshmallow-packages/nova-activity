@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Laravel\Nova\Nova;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
 use Marshmallow\NovaActivity\Events\ActivityCreated;
 
 class CreateActivityController
@@ -15,9 +16,12 @@ class CreateActivityController
     {
         $resource = Nova::resourceForKey($resourceName);
         $model = $resource::newModel()->findOrFail($resourceId);
+        return $this->storeNewActivity($model, $request);
+    }
 
+    public function storeNewActivity(Model $model, Request $request)
+    {
         try {
-
             $comment_validation = config('nova-activity.comment_validation');
             if ($comment_validation && !empty($comment_validation)) {
                 $request->validate($comment_validation);
@@ -30,7 +34,7 @@ class CreateActivityController
             if ($request->mentions) {
                 $mention_data = [];
                 $comment = Str::of($request->comment);
-                $available_mentions = json_decode($request->mentions, true);
+                $available_mentions = is_array($request->mentions) ? $request->mentions : json_decode($request->mentions, true);
                 collect($available_mentions)->each(function ($available_mention) use (&$mention_data, $comment) {
                     if ($comment->contains("@{$available_mention['value']}")) {
                         $mention_data[] = $available_mention['model'];

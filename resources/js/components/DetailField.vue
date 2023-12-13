@@ -16,16 +16,17 @@
             <NovaActivityList
                 :resourceName="resourceName"
                 :field="field"
-                :resourceId="resourceId"  />
+                :limit="field.limit_on_detail"
+                :resourceId="resourceId"
+            />
         </div>
     </div>
 </template>
 
-
 <script>
-import NovaActivityList from "./NovaActivityList";
-export default {
-    props: ["index", "resource", "resourceName", "resourceId", "field"],
-    components: { NovaActivityList },
-};
+    import NovaActivityList from "./NovaActivityList";
+    export default {
+        props: ["index", "resource", "resourceName", "resourceId", "field"],
+        components: { NovaActivityList },
+    };
 </script>

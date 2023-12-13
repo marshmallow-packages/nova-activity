@@ -11,7 +11,7 @@
         </h2>
         <div
             class="tw-flex tw-w-full tw-items-center tw-justify-center tw-rounded-md tw-bg-white tw-px-3 tw-py-2 tw-text-sm tw-font-semibold tw-text-gray-900 tw-shadow-sm tw-border-b tw-mb-4 tw-cursor-pointer"
-            v-if="field.limit && comment_history.length > field.limit"
+            v-if="limit && comment_history.length > limit"
             @click="show_all = !show_all"
         >
             <div v-if="!show_all">
@@ -19,7 +19,7 @@
                 <span class="tw-text-xs tw-text-gray-400"
                     >({{
                         __("novaActivity.count_more", {
-                            count: comment_history.length - field.limit,
+                            count: comment_history.length - limit,
                         })
                     }})</span
                 >
@@ -35,9 +35,9 @@
                         comment_history_item.is_hidden
                     "
                     :hidden="
-                        field.limit &&
+                        limit &&
                         !show_all &&
-                        index < comment_history.length - field.limit
+                        index < comment_history.length - limit
                     "
                     :comment="comment_history_item"
                     :resourceName="resourceName"
@@ -52,9 +52,9 @@
                         !comment_history_item.is_hidden
                     "
                     :hidden="
-                        field.limit &&
+                        limit &&
                         !show_all &&
-                        index < comment_history.length - field.limit
+                        index < comment_history.length - limit
                     "
                     :comment="comment_history_item"
                     :resourceName="resourceName"
@@ -71,7 +71,7 @@
     import ActivityWithoutComment from "./ActivityWithoutComment";
 
     export default {
-        props: ["resourceName", "resourceId", "field"],
+        props: ["resourceName", "resourceId", "field", "limit"],
 
         components: { ActivityWithComment, ActivityWithoutComment },
 

@@ -3,6 +3,7 @@
         <ActivityHistory
             ref="novaActivityHistory"
             :field="field"
+            :limit="limit"
             :resourceName="resourceName"
             :resourceId="resourceId"
         />
@@ -10,7 +11,7 @@
             :field="field"
             :resourceName="resourceName"
             :resourceId="resourceId"
-            />
+        />
     </div>
 </template>
 
@@ -22,7 +23,7 @@
     export default {
         mixins: [FormField, HandlesValidationErrors],
 
-        props: ["resourceName", "field", "resourceId"],
+        props: ["resourceName", "field", "resourceId", "limit"],
 
         components: { ActivityHistory, AddActivityForm },
 
@@ -30,7 +31,6 @@
         created() {},
 
         methods: {
-
             /*
              * Set the initial, internal value for the field.
              */

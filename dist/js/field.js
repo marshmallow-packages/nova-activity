@@ -17,7 +17,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["resourceName", "resourceId", "field"],
+  props: ["resourceName", "resourceId", "field", "limit"],
   components: {
     ActivityWithComment: _ActivityWithComment__WEBPACK_IMPORTED_MODULE_0__["default"],
     ActivityWithoutComment: _ActivityWithoutComment__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -241,6 +241,19 @@ __webpack_require__.r(__webpack_exports__);
     ActivityHistory: _ActivityHistory__WEBPACK_IMPORTED_MODULE_4__["default"],
     ModelSelect: vue_search_select__WEBPACK_IMPORTED_MODULE_3__.ModelSelect
   },
+  watch: {
+    type: function type(new_value, old_value) {
+      this.submitChangeToParent("type", new_value);
+      var type_label = this.field.types[new_value] === undefined ? "" : this.field.types[new_value];
+      this.submitChangeToParent("type_label", type_label);
+    },
+    date: function date(new_value, old_value) {
+      this.submitChangeToParent("date", new_value);
+    },
+    quick_reply: function quick_reply(new_value, old_value) {
+      this.submitChangeToParent("quick_reply", new_value);
+    }
+  },
   data: function data() {
     return {
       date: "",
@@ -294,6 +307,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     setQuickReply: function setQuickReply(quick_reply_key) {
       this.quick_reply = quick_reply_key;
+    },
+    submitChangeToParent: function submitChangeToParent(key, valye) {
+      this.$parent.$parent.$parent.setValue(key, valye);
     },
     submitComment: function submitComment() {
       var self = this;
@@ -380,7 +396,15 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     NovaActivityList: _NovaActivityList__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  data: function data() {
+    return {
+      current_value: {}
+    };
+  },
   methods: {
+    setValue: function setValue(key, value) {
+      this.current_value[key] = value;
+    },
     /*
      * Set the initial, internal value for the field.
      */
@@ -391,7 +415,9 @@ __webpack_require__.r(__webpack_exports__);
      * Fill the given FormData object with the field's internal value.
      */
     fill: function fill(formData) {
-      formData.append(this.fieldAttribute, this.value || "");
+      this.setValue("comment", this.field.use_comments ? document.getElementById("comment").value : "");
+      this.setValue("mentions", this.field.mentions);
+      formData.append(this.fieldAttribute, JSON.stringify(this.current_value));
     }
   }
 });
@@ -452,7 +478,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [laravel_nova__WEBPACK_IMPORTED_MODULE_2__.FormField, laravel_nova__WEBPACK_IMPORTED_MODULE_2__.HandlesValidationErrors],
-  props: ["resourceName", "field", "resourceId"],
+  props: ["resourceName", "field", "resourceId", "limit"],
   components: {
     ActivityHistory: _ActivityHistory__WEBPACK_IMPORTED_MODULE_0__["default"],
     AddActivityForm: _AddActivityForm__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -583,25 +609,25 @@ var _hoisted_6 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_ActivityWithoutComment = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ActivityWithoutComment");
   var _component_ActivityWithComment = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ActivityWithComment");
-  return $data.comment_history && $data.comment_history.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [$props.field.activity_title ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h2", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.field.activity_title), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.field.limit && $data.comment_history.length > $props.field.limit ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+  return $data.comment_history && $data.comment_history.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [$props.field.activity_title ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h2", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.field.activity_title), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.limit && $data.comment_history.length > $props.limit ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 1,
     "class": "tw-flex tw-w-full tw-items-center tw-justify-center tw-rounded-md tw-bg-white tw-px-3 tw-py-2 tw-text-sm tw-font-semibold tw-text-gray-900 tw-shadow-sm tw-border-b tw-mb-4 tw-cursor-pointer",
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $data.show_all = !$data.show_all;
     })
   }, [!$data.show_all ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("novaActivity.view_all_activity")) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_4, "(" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("novaActivity.count_more", {
-    count: $data.comment_history.length - $props.field.limit
+    count: $data.comment_history.length - $props.limit
   })) + ")", 1 /* TEXT */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.show_all ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("novaActivity.only_show_latests")), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_6, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.comment_history, function (comment_history_item, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [!comment_history_item.comment || comment_history_item.is_hidden ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_ActivityWithoutComment, {
       key: comment_history_item.id,
-      hidden: $props.field.limit && !$data.show_all && index < $data.comment_history.length - $props.field.limit,
+      hidden: $props.limit && !$data.show_all && index < $data.comment_history.length - $props.limit,
       comment: comment_history_item,
       resourceName: $props.resourceName,
       resourceId: $props.resourceId,
       field: $props.field
     }, null, 8 /* PROPS */, ["hidden", "comment", "resourceName", "resourceId", "field"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), comment_history_item.comment && !comment_history_item.is_hidden ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_ActivityWithComment, {
       key: comment_history_item.id,
-      hidden: $props.field.limit && !$data.show_all && index < $data.comment_history.length - $props.field.limit,
+      hidden: $props.limit && !$data.show_all && index < $data.comment_history.length - $props.limit,
       comment: comment_history_item,
       resourceName: $props.resourceName,
       resourceId: $props.resourceId,
@@ -1001,6 +1027,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     src: $props.field.user.avatar,
     "class": "tw-inline-block tw-h-10 tw-w-10 tw-rounded-full"
   }, null, 8 /* PROPS */, _hoisted_3)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_model_select, {
+    onChange: _ctx.updateType,
     options: $data.comment_types,
     modelValue: $data.type,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
@@ -1009,7 +1036,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     id: "type",
     name: "type",
     placeholder: _ctx.__('novaActivity.select_comment_type_placeholder')
-  }, null, 8 /* PROPS */, ["options", "modelValue", "placeholder"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [$props.field.use_comments ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_trix_editor, {
+  }, null, 8 /* PROPS */, ["onChange", "options", "modelValue", "placeholder"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [$props.field.use_comments ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_trix_editor, {
     key: 0,
     rows: "3",
     name: "comment",
@@ -1078,8 +1105,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.field.name), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NovaActivityList, {
     resourceName: $props.resourceName,
     field: $props.field,
+    limit: $props.field.limit_on_detail,
     resourceId: $props.resourceId
-  }, null, 8 /* PROPS */, ["resourceName", "field", "resourceId"])])]);
+  }, null, 8 /* PROPS */, ["resourceName", "field", "limit", "resourceId"])])]);
 }
 
 /***/ }),
@@ -1111,8 +1139,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NovaActivityList, {
         resourceName: $props.resourceName,
         field: $props.field,
+        limit: $props.field.limit_on_forms,
         resourceId: $props.resourceId
-      }, null, 8 /* PROPS */, ["resourceName", "field", "resourceId"])];
+      }, null, 8 /* PROPS */, ["resourceName", "field", "limit", "resourceId"])];
     }),
     _: 1 /* STABLE */
   }, 8 /* PROPS */, ["field", "errors", "show-help-text", "full-width-content"]);
@@ -1159,7 +1188,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__('novaActivity.open_index_model')), 1 /* TEXT */)];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("novaActivity.open_index_model")), 1 /* TEXT */)];
     }),
     _: 1 /* STABLE */
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Modal, {
@@ -1178,8 +1207,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NovaActivityList, {
         resourceName: $props.resourceName,
         field: $props.field,
+        limit: $props.field.limit_on_index,
         resourceId: $props.resource.id.value
-      }, null, 8 /* PROPS */, ["resourceName", "field", "resourceId"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ModalFooter, null, {
+      }, null, 8 /* PROPS */, ["resourceName", "field", "limit", "resourceId"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ModalFooter, null, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CancelButton, {
             component: "button",
@@ -1189,7 +1219,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             onClick: $options.closeModel
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__('novaActivity.close_index_model')), 1 /* TEXT */)];
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("novaActivity.close_index_model")), 1 /* TEXT */)];
             }),
             _: 1 /* STABLE */
           }, 8 /* PROPS */, ["onClick"])])];
@@ -1223,9 +1253,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ActivityHistory, {
     ref: "novaActivityHistory",
     field: $props.field,
+    limit: $props.limit,
     resourceName: $props.resourceName,
     resourceId: $props.resourceId
-  }, null, 8 /* PROPS */, ["field", "resourceName", "resourceId"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_AddActivityForm, {
+  }, null, 8 /* PROPS */, ["field", "limit", "resourceName", "resourceId"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_AddActivityForm, {
     field: $props.field,
     resourceName: $props.resourceName,
     resourceId: $props.resourceId

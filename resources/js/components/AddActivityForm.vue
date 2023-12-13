@@ -10,8 +10,16 @@
         <div class="tw-min-w-0 tw-flex-1">
             <div class="tw-relative">
                 <div class="tw-mb-2">
-                    <input name="focus_trap" style="position:absolute;top:-50000px;left:-50000px;" />
+                    <input
+                        name="focus_trap"
+                        style="
+                            position: absolute;
+                            top: -50000px;
+                            left: -50000px;
+                        "
+                    />
                     <model-select
+                        @change="updateType"
                         :options="comment_types"
                         v-model="type"
                         id="type"
@@ -98,6 +106,23 @@
 
         components: { QuickReply, ActivityHistory, ModelSelect },
 
+        watch: {
+            type: function (new_value, old_value) {
+                this.submitChangeToParent("type", new_value);
+                let type_label =
+                    this.field.types[new_value] === undefined
+                        ? ""
+                        : this.field.types[new_value];
+                this.submitChangeToParent("type_label", type_label);
+            },
+            date: function (new_value, old_value) {
+                this.submitChangeToParent("date", new_value);
+            },
+            quick_reply: function (new_value, old_value) {
+                this.submitChangeToParent("quick_reply", new_value);
+            },
+        },
+
         data() {
             return {
                 date: "",
@@ -125,6 +150,7 @@
                 });
                 tribute.attach(document.getElementById("comment"));
                 var editor = document.getElementById("comment").editor;
+
                 if (editor != null) {
                     editor.composition.delegate.inputController.events.keypress =
                         function () {};
@@ -166,6 +192,10 @@
 
             setQuickReply(quick_reply_key) {
                 this.quick_reply = quick_reply_key;
+            },
+
+            submitChangeToParent(key, valye) {
+                this.$parent.$parent.$parent.setValue(key, valye);
             },
 
             submitComment() {

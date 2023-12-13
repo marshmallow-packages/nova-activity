@@ -3,6 +3,9 @@
 namespace Marshmallow\NovaActivity;
 
 use Laravel\Nova\Fields\Field;
+use Illuminate\Database\Eloquent\Model;
+use Laravel\Nova\Http\Requests\UpdateResourceRequest;
+use Marshmallow\NovaActivity\Http\Controllers\CreateActivityController;
 
 class Activity extends Field
 {
@@ -24,8 +27,15 @@ class Activity extends Field
             ->setLocale(config('app.locale'))
             ->dateFormat('Do MMM, YYYY')
             ->activityTitle(__('novaActivity.title'))
-            ->fillUsing(function () {
-                //
+            ->fillUsing(function (UpdateResourceRequest $request, Model $resource, $field_name) {
+                $activity_data = json_decode($request->get($field_name), true);
+                collect($activity_data)->each(function ($value, $key) use (&$request) {
+                    $request->merge([
+                        $key => $value,
+                    ]);
+                });
+                (new CreateActivityController)
+                    ->storeNewActivity($resource, $request);
             });
     }
 
@@ -52,10 +62,31 @@ class Activity extends Field
         ]);
     }
 
-    public function limit(int $limit)
+    public function limit(int|null $limit)
+    {
+        return $this->limitOnDetail($limit)
+            ->limitOnIndex($limit)
+            ->limitOnForms($limit);
+    }
+
+    public function limitOnDetail(int|null $limit)
     {
         return $this->withMeta([
-            'limit' => $limit,
+            'limit_on_detail' => $limit,
+        ]);
+    }
+
+    public function limitOnIndex(int|null $limit)
+    {
+        return $this->withMeta([
+            'limit_on_index' => $limit,
+        ]);
+    }
+
+    public function limitOnForms(int|null $limit)
+    {
+        return $this->withMeta([
+            'limit_on_forms' => $limit,
         ]);
     }
 

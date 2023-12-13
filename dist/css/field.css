@@ -447,23 +447,6 @@
     outline: 2px solid transparent;
     outline-offset: 2px
 }
-@media (prefers-color-scheme: dark) {
-    .dark\:tw-bg-none {
-        background-image: none
-    }
-    .dark\:tw-text-gray-300 {
-        --tw-text-opacity: 1;
-        color: rgb(209 213 219 / var(--tw-text-opacity))
-    }
-    .dark\:tw-text-gray-400 {
-        --tw-text-opacity: 1;
-        color: rgb(156 163 175 / var(--tw-text-opacity))
-    }
-    .dark\:tw-text-gray-500 {
-        --tw-text-opacity: 1;
-        color: rgb(107 114 128 / var(--tw-text-opacity))
-    }
-}
 @media (min-width: 640px) {
     .sm\:tw-ml-auto {
         margin-left: auto

@@ -1,7 +1,7 @@
 <template>
     <div>
         <LinkButton @click="show = true">
-            {{ __('novaActivity.open_index_model') }}
+            {{ __("novaActivity.open_index_model") }}
         </LinkButton>
         <Modal
             :show="show"
@@ -21,6 +21,7 @@
                         <NovaActivityList
                             :resourceName="resourceName"
                             :field="field"
+                            :limit="field.limit_on_index"
                             :resourceId="resource.id.value"
                         />
                     </div>
@@ -35,7 +36,7 @@
                             class="ml-auto mr-3"
                             @click="closeModel"
                         >
-                            {{ __('novaActivity.close_index_model') }}
+                            {{ __("novaActivity.close_index_model") }}
                         </CancelButton>
                     </div>
                 </ModalFooter>

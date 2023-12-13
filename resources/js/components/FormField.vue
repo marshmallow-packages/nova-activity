@@ -9,6 +9,7 @@
             <NovaActivityList
                 :resourceName="resourceName"
                 :field="field"
+                :limit="field.limit_on_forms"
                 :resourceId="resourceId"
             />
         </template>
@@ -26,7 +27,17 @@
 
         components: { NovaActivityList },
 
+        data() {
+            return {
+                current_value: {},
+            };
+        },
+
         methods: {
+            setValue(key, value) {
+                this.current_value[key] = value;
+            },
+
             /*
              * Set the initial, internal value for the field.
              */
@@ -38,7 +49,18 @@
              * Fill the given FormData object with the field's internal value.
              */
             fill(formData) {
-                formData.append(this.fieldAttribute, this.value || "");
+                this.setValue(
+                    "comment",
+                    this.field.use_comments
+                        ? document.getElementById("comment").value
+                        : ""
+                );
+                this.setValue("mentions", this.field.mentions);
+
+                formData.append(
+                    this.fieldAttribute,
+                    JSON.stringify(this.current_value)
+                );
             },
         },
     };

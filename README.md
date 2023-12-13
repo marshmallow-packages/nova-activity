@@ -85,7 +85,10 @@ public function avatarPath()
 ```
 
 ```php
-->limit(3)
+->limit(3) // will limit on index, detail and forms
+->limitOnDetail(null)
+->limitOnIndex(3)
+->limitOnForms(10)
 ->alwaysShowComments()
 ```
 
