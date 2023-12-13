@@ -6,7 +6,7 @@
             <div class="tw-w-px tw-bg-gray-200 dark:tw-bg-gray-700"></div>
         </div>
         <div
-            class="tw-relative tw-flex tw-h-6 tw-w-6 tw-flex-none tw-items-center tw-justify-center dark:tw-bg-none tw-bg-white"
+            class="tw-relative tw-flex tw-h-6 tw-w-6 tw-flex-none tw-items-center tw-justify-center"
         >
             <div
                 class="tw-h-1.5 tw-w-1.5 tw-rounded-full tw-bg-gray-100 tw-ring-1 tw-ring-gray-300"

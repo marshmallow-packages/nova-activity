@@ -71,7 +71,7 @@
                                     ref="datePicker"
                                     v-model="date"
                                     type="date"
-                                    class="tw-w-4 focus:tw-outline-none"
+                                    class="tw-w-4 focus:tw-outline-none tw-bg-transparent dark:[color-scheme:dark]"
                                     placeholder="Select date"
                                 />
                                 <span class="tw-text-xs">
