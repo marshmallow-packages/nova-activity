@@ -3,7 +3,7 @@
         <div
             class="tw-absolute tw-left-0 tw-top-0 tw-flex tw-w-6 tw-justify-center tw--bottom-6"
         >
-            <div class="tw-w-px tw-bg-gray-200"></div>
+            <div class="tw-w-px tw-bg-gray-200 dark:tw-bg-gray-700"></div>
         </div>
 
         <img
@@ -19,26 +19,29 @@
             <Icon :width="16" :type="comment.user.icon" :solid="true" />
         </div>
         <div
-            class="tw-flex-auto tw-rounded-md tw-p-3 tw-ring-1 tw-ring-inset tw-ring-gray-200"
+            class="tw-flex-auto tw-mt-3 tw-rounded-md tw-p-3 tw-ring-1 tw-ring-inset tw-ring-gray-200 dark:tw-ring-gray-700 dark:tw-bg-gray-700"
         >
             <div class="tw-flex tw-justify-between tw-gap-x-4">
                 <div
                     class="tw-py-0.5 tw-cursor-pointer tw-text-xs tw-leading-5 tw-text-gray-500"
                     @click="toggleComment()"
                 >
-                    <div class="tw-font-medium tw-text-gray-900 tw-flex">
+                    <div
+                        class="tw-font-medium dark:text-gray-400 tw-text-gray-900 tw-flex"
+                    >
                         <ActivityStateIcons :comment="comment" />
-                        <div>
+                        <div class="dark:text-gray-200">
                             {{ comment.user.name }}
-                            <span class="tw-text-gray-500">{{
-                                comment.type.label
-                            }}</span>
+                            <span
+                                class="tw-text-gray-500 dark:tw-text-gray-400"
+                                >{{ comment.type.label }}</span
+                            >
                         </div>
                     </div>
                 </div>
                 <div class="tw-flex tw-gap-x-2">
                     <time
-                        class="tw-flex-none tw-py-0.5 tw-text-xs tw-leading-5 tw-text-gray-500"
+                        class="tw-flex-none tw-py-0.5 tw-text-xs tw-leading-5 dark:text-gray-400 tw-text-gray-500"
                     >
                         {{ comment.time_ago }}
                     </time>
@@ -47,9 +50,12 @@
             </div>
             <div
                 v-if="show_comment"
-                class="tw-text-sm tw-leading-6 tw-text-gray-500"
+                class="tw-text-sm tw-leading-6 tw-text-gray-500 dark:tw-text-gray-400"
             >
-                <p class="tw-mb-4" v-html="comment.comment"></p>
+                <p
+                    class="tw-mb-4 dark:tw-text-gray-200"
+                    v-html="comment.comment"
+                ></p>
             </div>
             <div class="tw-flex">
                 <QuickReply
