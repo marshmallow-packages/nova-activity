@@ -42,13 +42,13 @@
                         :value="comment"
                         @file-added="handleFileAdded"
                         @file-removed="handleFileRemoved"
-                        :with-files="true"
+                        :with-files="false"
+                        :placeholder="__('novaActivity.comment_placeholder')"
                         class="tw-block tw-ml-px tw-pl-2 tw-w-[99%] mx-auto tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 placeholder:tw-text-gray-400 dark:text-gray-400 sm:tw-text-sm sm:tw-leading-6 focus:tw-outline-none"
-                        v-bind="{ rows: 3 }"
                     />
                     <!-- <trix-editor
                         v-if="field.use_comments"
-                        rows="3"
+
                         name="comment"
                         id="comment"
                         class="tw-block tw-ml-px tw-pl-2 tw-w-[99%] mx-auto tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 placeholder:tw-text-gray-400 dark:text-gray-400 sm:tw-text-sm sm:tw-leading-6"
@@ -141,37 +141,43 @@
                 type: "",
                 quick_reply: "",
                 comment_types: [],
+                filToolsDisplay: "inherit",
             };
         },
 
         mounted() {
             if (this.field.mentions) {
-                // var tribute = new Tribute({
-                //     values: this.field.mentions,
-                //     selectTemplate: function (item) {
-                //         return "<strong>@" + item.original.value + "</strong>";
-                //     },
-                //     menuItemTemplate: function (item) {
-                //         return (
-                //             '<img src="' +
-                //             item.original.avatar_url +
-                //             '">' +
-                //             item.string
-                //         );
-                //     },
-                // });
-                // tribute.attach(document.getElementById("comment"));
-                // var editor = document.getElementById("comment").editor;
-                // if (editor != null) {
-                //     editor.composition.delegate.inputController.events.keypress =
-                //         function () {};
-                //     editor.composition.delegate.inputController.events.keydown =
-                //         function () {};
-                // }
+                var tribute = new Tribute({
+                    values: this.field.mentions,
+                    selectTemplate: function (item) {
+                        return "<strong>@" + item.original.value + "</strong>";
+                    },
+
+                    menuItemTemplate: function (item) {
+                        return (
+                            '<div class="tw-bg-white tw-p-2 tw--mt-1 tw-rounded tw-border tw-block tw-group tw-flex-shrink-0"><div class="tw-flex tw-items-center"><div><img class="tw-inline-block tw-h-6 tw-w-6 tw-rounded-full" src="' +
+                            item.original.avatar_url +
+                            '" alt=""></div><div class="tw-ml-3"><p class="tw-text-sm tw-font-medium tw-text-gray-700 group-hover:tw-text-gray-900">' +
+                            item.string +
+                            "</p></div></div></div>"
+                        );
+                    },
+                });
+                tribute.attach(document.getElementById("comment"));
+                var editor = document.getElementById("comment").editor;
+                if (editor != null) {
+                    editor.composition.delegate.inputController.events.keypress =
+                        function () {};
+                    editor.composition.delegate.inputController.events.keydown =
+                        function () {};
+                }
             }
         },
         created() {
             this.date = this.moment(new Date()).format("YYYY-MM-DD");
+            this.filToolsDisplay = this.field.use_file_uploads
+                ? "inherit"
+                : "none";
 
             for (const comment_type in this.field.types) {
                 this.comment_types.push({
@@ -275,3 +281,9 @@
         },
     };
 </script>
+
+<style>
+    .trix-button-group.trix-button-group--file-tools {
+        display: v-bind("filToolsDisplay");
+    }
+</style>

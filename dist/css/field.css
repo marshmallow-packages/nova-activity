@@ -1203,6 +1203,10 @@
 
     margin-top: 0.75rem;
 }
+.tw--mt-1 {
+
+    margin-top: -0.25rem;
+}
 .tw-block {
 
     display: block;
@@ -1298,6 +1302,10 @@
 .tw-w-px {
 
     width: 1px;
+}
+.tw-w-9 {
+
+    width: 2.25rem;
 }
 .tw-min-w-0 {
 
@@ -1476,6 +1484,10 @@
 .tw-p-6 {
 
     padding: 1.5rem;
+}
+.tw-p-2 {
+
+    padding: 0.5rem;
 }
 .tw-px-2 {
 
@@ -1740,6 +1752,12 @@
 .tw-group:hover .group-hover\:tw-font-semibold {
 
     font-weight: 600;
+}
+.tw-group:hover .group-hover\:tw-text-gray-900 {
+
+    --tw-text-opacity: 1;
+
+    color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 :is(.tw-dark .dark\:tw-border-gray-700) {
 

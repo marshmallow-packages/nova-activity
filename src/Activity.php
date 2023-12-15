@@ -27,6 +27,7 @@ class Activity extends Field
             ->setLocale(config('app.locale'))
             ->jsDateFormat(config('nova-activity.dates.js_format'))
             ->useHumanReadableDates(config('nova-activity.dates.use_human_readable'))
+            ->useFileUploads(config('nova-activity.use_file_uploads'))
             ->activityTitle(__('novaActivity.title'))
             ->fillUsing(function (UpdateResourceRequest $request, Model $resource, $field_name) {
                 $activity_data = json_decode($request->get($field_name), true);
@@ -95,6 +96,13 @@ class Activity extends Field
     {
         return $this->withMeta([
             'use_human_readable_dates' => $use_human_readable_dates,
+        ]);
+    }
+
+    public function useFileUploads(bool $use_file_uploads)
+    {
+        return $this->withMeta([
+            'use_file_uploads' => $use_file_uploads,
         ]);
     }
 

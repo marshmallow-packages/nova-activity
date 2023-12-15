@@ -7,6 +7,8 @@ return [
 
     'use_comments' => true,
 
+    'use_file_uploads' => false,
+
     'dates' => [
         'format' => 'd M, Y \a\t H:i',
         // moment.js formatting
