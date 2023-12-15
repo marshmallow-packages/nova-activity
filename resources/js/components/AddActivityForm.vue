@@ -149,13 +149,17 @@
             if (this.field.mentions) {
                 var tribute = new Tribute({
                     values: this.field.mentions,
+                    selectClass: "tw-bg-gray-100",
+                    itemClass: "tw-border-b last:tw-border-b-0",
+                    containerClass:
+                        "tw-bg-white tw-divide-y tw-rounded tw-border tw-divide-dashed",
                     selectTemplate: function (item) {
                         return "<strong>@" + item.original.value + "</strong>";
                     },
 
                     menuItemTemplate: function (item) {
                         return (
-                            '<div class="tw-bg-white tw-p-2 tw--mt-1 tw-rounded tw-border tw-block tw-group tw-flex-shrink-0"><div class="tw-flex tw-items-center"><div><img class="tw-inline-block tw-h-6 tw-w-6 tw-rounded-full" src="' +
+                            '<div class="tw-p-1 tw-cursor-pointer tw-block tw-group tw-flex-shrink-0"><div class="tw-flex tw-items-center"><div><img class="tw-inline-block tw-h-4 tw-w-4 tw-rounded-full" src="' +
                             item.original.avatar_url +
                             '" alt=""></div><div class="tw-ml-3"><p class="tw-text-sm tw-font-medium tw-text-gray-700 group-hover:tw-text-gray-900">' +
                             item.string +
