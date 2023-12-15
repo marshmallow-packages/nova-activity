@@ -222,4 +222,6 @@ public static $clickAction = 'ignore';
 ```php
 ->dateFormat('Do MMM, YYYY')
 ->useHumanReadableDates(true)
+->useQuickReplies(true)
+->useFileUploads(true)
 ```

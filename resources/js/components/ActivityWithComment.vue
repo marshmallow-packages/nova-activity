@@ -64,7 +64,10 @@
             </div>
             <div class="tw-flex">
                 <QuickReply
-                    v-if="comment.has_quick_replies || show_comment"
+                    v-if="
+                        field.use_quick_replies &&
+                        (comment.has_quick_replies || show_comment)
+                    "
                     :field="field"
                     :comment_id="comment.id"
                     :current_value="
@@ -78,7 +81,7 @@
                     size="small"
                 />
                 <div
-                    v-if="comment.other_quick_replies"
+                    v-if="field.use_quick_replies && comment.other_quick_replies"
                     class="tw-flex tw--space-x-1 tw-mt-0 tw-overflow-hidden"
                 >
                     <div

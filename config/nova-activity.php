@@ -3,7 +3,7 @@
 return [
     'table_name' => 'nova_activity',
 
-    'quick_replies' => true,
+    'use_quick_replies' => true,
 
     'use_comments' => true,
 
