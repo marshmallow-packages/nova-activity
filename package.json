@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
     "@vue/compiler-sfc": "^3.2.22",
     "form-backend-validation": "^2.3.3",
     "laravel-mix": "^6.0.41",

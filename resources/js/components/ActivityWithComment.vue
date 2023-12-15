@@ -57,10 +57,10 @@
                 v-if="show_comment"
                 class="tw-text-sm tw-leading-6 tw-text-gray-500 dark:tw-text-gray-400"
             >
-                <p
-                    class="tw-mb-4 dark:tw-text-gray-200"
+                <div
+                    class="tw-mb-4 dark:tw-text-gray-200 tw-prose tw-prose-sm"
                     v-html="comment.comment"
-                ></p>
+                ></div>
             </div>
             <div class="tw-flex">
                 <QuickReply

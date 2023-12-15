@@ -35,14 +35,25 @@
                 <div
                     class="tw-overflow-hidden dark:tw-border-gray-700 dark:tw-ring-gray-700 dark:focus:tw-bg-gray-900 dark:tw-bg-gray-900 tw-rounded-lg trix-editor tw-shadow-sm tw-ring-1 tw-ring-inset tw-ring-gray-300"
                 >
-                    <trix-editor
+                    <Trix
+                        v-if="field.use_comments"
+                        id="comment"
+                        name="comment"
+                        :value="comment"
+                        @file-added="handleFileAdded"
+                        @file-removed="handleFileRemoved"
+                        :with-files="true"
+                        class="tw-block tw-ml-px tw-pl-2 tw-w-[99%] mx-auto tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 placeholder:tw-text-gray-400 dark:text-gray-400 sm:tw-text-sm sm:tw-leading-6 focus:tw-outline-none"
+                        v-bind="{ rows: 3 }"
+                    />
+                    <!-- <trix-editor
                         v-if="field.use_comments"
                         rows="3"
                         name="comment"
                         id="comment"
                         class="tw-block tw-ml-px tw-pl-2 tw-w-[99%] mx-auto tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 placeholder:tw-text-gray-400 dark:text-gray-400 sm:tw-text-sm sm:tw-leading-6"
                         :placeholder="__('novaActivity.comment_placeholder')"
-                    ></trix-editor>
+                    ></trix-editor> -->
 
                     <div class="tw-py-2" aria-hidden="true">
                         <div class="tw-py-px">
@@ -135,29 +146,28 @@
 
         mounted() {
             if (this.field.mentions) {
-                var tribute = new Tribute({
-                    values: this.field.mentions,
-                    selectTemplate: function (item) {
-                        return "<strong>@" + item.original.value + "</strong>";
-                    },
-                    menuItemTemplate: function (item) {
-                        return (
-                            '<img src="' +
-                            item.original.avatar_url +
-                            '">' +
-                            item.string
-                        );
-                    },
-                });
-                tribute.attach(document.getElementById("comment"));
-                var editor = document.getElementById("comment").editor;
-
-                if (editor != null) {
-                    editor.composition.delegate.inputController.events.keypress =
-                        function () {};
-                    editor.composition.delegate.inputController.events.keydown =
-                        function () {};
-                }
+                // var tribute = new Tribute({
+                //     values: this.field.mentions,
+                //     selectTemplate: function (item) {
+                //         return "<strong>@" + item.original.value + "</strong>";
+                //     },
+                //     menuItemTemplate: function (item) {
+                //         return (
+                //             '<img src="' +
+                //             item.original.avatar_url +
+                //             '">' +
+                //             item.string
+                //         );
+                //     },
+                // });
+                // tribute.attach(document.getElementById("comment"));
+                // var editor = document.getElementById("comment").editor;
+                // if (editor != null) {
+                //     editor.composition.delegate.inputController.events.keypress =
+                //         function () {};
+                //     editor.composition.delegate.inputController.events.keydown =
+                //         function () {};
+                // }
             }
         },
         created() {
