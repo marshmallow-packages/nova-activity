@@ -144,10 +144,10 @@ class Activity extends Field
         ]);
     }
 
-    public function alwaysShowComments()
+    public function alwaysShowComments(bool $show_comments = true)
     {
         return $this->withMeta([
-            'always_show_comments' => true,
+            'always_show_comments' => $show_comments,
         ]);
     }
 
