@@ -64,6 +64,7 @@
             </div>
             <div class="tw-flex">
                 <QuickReply
+                    v-if="comment.has_quick_replies || show_comment"
                     :field="field"
                     :comment_id="comment.id"
                     :current_value="

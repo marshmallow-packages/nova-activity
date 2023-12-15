@@ -772,7 +772,7 @@ var _hoisted_16 = {
   "class": "tw-flex"
 };
 var _hoisted_17 = {
-  key: 0,
+  key: 1,
   "class": "tw-flex tw--space-x-1 tw-mt-0 tw-overflow-hidden"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -801,13 +801,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8 /* PROPS */, ["comment"])])]), $data.show_comment ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "tw-mb-4 dark:tw-text-gray-200 tw-prose tw-prose-sm",
     innerHTML: $props.comment.comment
-  }, null, 8 /* PROPS */, _hoisted_15)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_QuickReply, {
+  }, null, 8 /* PROPS */, _hoisted_15)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [$props.comment.has_quick_replies || $data.show_comment ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_QuickReply, {
+    key: 0,
     field: $props.field,
     comment_id: $props.comment.id,
     current_value: $props.comment.meta && $props.comment.meta.quick_replies ? $props.comment.meta.quick_replies['user_' + $props.field.user.id] : '',
     action: "update_quick_reply",
     size: "small"
-  }, null, 8 /* PROPS */, ["field", "comment_id", "current_value"]), $props.comment.other_quick_replies ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.comment.other_quick_replies, function (other_quick_reply, index) {
+  }, null, 8 /* PROPS */, ["field", "comment_id", "current_value"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.comment.other_quick_replies ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.comment.other_quick_replies, function (other_quick_reply, index) {
     var _$props$field$quick_r;
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": "tw-inline-block",

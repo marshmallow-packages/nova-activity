@@ -2,6 +2,7 @@
 
 namespace Marshmallow\NovaActivity\Resources;
 
+use Illuminate\Support\Arr;
 use Marshmallow\NovaActivity\Activity;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -29,6 +30,7 @@ class NovaActivityResource extends JsonResource
             ],
             'comment' => nl2br($this->comment),
             'meta' => $this->meta,
+            'has_quick_replies' => count(Arr::get($this->meta, 'quick_replies', [])) > 0,
             'other_quick_replies' => $this->getOtherQuickReplies(),
             'created_at' => $this->created_at->format(
                 config('nova-activity.dates.format')
