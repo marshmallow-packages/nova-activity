@@ -25,7 +25,8 @@ class Activity extends Field
             ->addCurrentUser()
             ->useComments(config('nova-activity.use_comments'))
             ->setLocale(config('app.locale'))
-            ->dateFormat('Do MMM, YYYY')
+            ->jsDateFormat(config('nova-activity.dates.js_format'))
+            ->useHumanReadableDates(config('nova-activity.dates.use_human_readable'))
             ->activityTitle(__('novaActivity.title'))
             ->fillUsing(function (UpdateResourceRequest $request, Model $resource, $field_name) {
                 $activity_data = json_decode($request->get($field_name), true);
@@ -90,6 +91,13 @@ class Activity extends Field
         ]);
     }
 
+    public function useHumanReadableDates(bool $use_human_readable_dates)
+    {
+        return $this->withMeta([
+            'use_human_readable_dates' => $use_human_readable_dates,
+        ]);
+    }
+
     public function mentions(array|callable $mentions)
     {
         $mentions = is_callable($mentions) ? $mentions() : $mentions;
@@ -121,10 +129,10 @@ class Activity extends Field
         ]);
     }
 
-    public function dateFormat(string $date_format)
+    public function jsDateFormat(string $js_date_format)
     {
         return $this->withMeta([
-            'date_format' => $date_format,
+            'js_date_format' => $js_date_format,
         ]);
     }
 

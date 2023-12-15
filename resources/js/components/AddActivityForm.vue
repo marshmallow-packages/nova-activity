@@ -182,7 +182,7 @@
 
                 return moment(this.date)
                     .locale(this.field.locale)
-                    .format(this.field.date_format);
+                    .format(this.field.js_date_format);
             },
 
             openDatePicker() {

@@ -218,3 +218,8 @@ $user = $event->user;
 /** Add this so the index button will work. */
 public static $clickAction = 'ignore';
 ```
+
+```php
+->dateFormat('Do MMM, YYYY')
+->useHumanReadableDates(true)
+```

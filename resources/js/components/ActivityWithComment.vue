@@ -43,7 +43,12 @@
                     <time
                         class="tw-flex-none tw-py-0.5 tw-text-xs tw-leading-5 dark:text-gray-400 tw-text-gray-500"
                     >
-                        {{ comment.time_ago }}
+                        <span v-if="field.use_human_readable_dates">
+                            {{ comment.time_ago }}
+                        </span>
+                        <span v-if="!field.use_human_readable_dates">
+                            {{ comment.created_at }}
+                        </span>
                     </time>
                     <ActiviyActions :comment="comment" />
                 </div>

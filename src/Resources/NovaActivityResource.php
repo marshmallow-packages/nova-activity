@@ -30,6 +30,9 @@ class NovaActivityResource extends JsonResource
             'comment' => nl2br($this->comment),
             'meta' => $this->meta,
             'other_quick_replies' => $this->getOtherQuickReplies(),
+            'created_at' => $this->created_at->format(
+                config('nova-activity.dates.format')
+            ),
             'time_ago' => $this->created_at->diffForHumans(),
             'is_starred' => $this->is_starred,
             'is_pinned' => $this->is_pinned,

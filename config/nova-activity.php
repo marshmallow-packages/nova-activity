@@ -7,6 +7,13 @@ return [
 
     'use_comments' => true,
 
+    'dates' => [
+        'format' => 'd M, Y \a\t H:i',
+        // moment.js formatting
+        'js_format' => 'Do MMM, YYYY',
+        'use_human_readable' => true,
+    ],
+
     'comment_validation' => [
         'type' => 'required',
     ],
