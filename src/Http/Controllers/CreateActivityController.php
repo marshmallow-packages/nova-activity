@@ -19,22 +19,44 @@ class CreateActivityController
         return $this->storeNewActivity($model, $request);
     }
 
-    public function storeNewActivity(Model $model, Request $request)
+    public function storeNewActivity(Model $model, Request $request, string $key_prefixer = '')
     {
         try {
             $comment_validation = config('nova-activity.comment_validation');
+
+            if ($key_prefixer) {
+                foreach ($comment_validation as $attribute => $rules) {
+                    unset($comment_validation[$attribute]);
+                    $comment_validation[$key_prefixer . $attribute] = $rules;
+                }
+            }
+
             if ($comment_validation && !empty($comment_validation)) {
                 $request->validate($comment_validation);
             }
 
-            $quick_replies = $request->quick_reply ? [
-                'user_' . $request->user()->id => $request->quick_reply,
+            $attributes = [
+                'comment', 'quick_reply', 'mentions',
+                'type', 'type_label', 'date',
+            ];
+
+            foreach ($attributes as $attribute) {
+                $variable_name = "{$attribute}_attribute";
+                $$variable_name = "{$key_prefixer}{$attribute}";
+                $$attribute = $request->{$$variable_name};
+            }
+
+            $user = $request->user();
+
+            $quick_replies = $quick_reply ? [
+                'user_' . $user->id => $quick_reply,
             ] : [];
 
-            if ($request->mentions) {
+            if ($mentions) {
                 $mention_data = [];
-                $comment = Str::of($request->comment);
-                $available_mentions = is_array($request->mentions) ? $request->mentions : json_decode($request->mentions, true);
+                $comment = Str::of($comment);
+                $available_mentions = is_array($mentions)
+                    ? $mentions : json_decode($mentions, true);
                 collect($available_mentions)->each(function ($available_mention) use (&$mention_data, $comment) {
                     if ($comment->contains("@{$available_mention['value']}")) {
                         $mention_data[] = $available_mention['model'];
@@ -43,11 +65,11 @@ class CreateActivityController
             }
 
             $activity = $model->addActivity(
-                user_id: $request->user()->id,
-                type: $request->type,
-                label: $request->type_label,
-                comment: $request->comment,
-                created_at: Carbon::parse($request->date)->setTimeFromTimeString(
+                user_id: $user->id,
+                type: $type,
+                label: $type_label,
+                comment: $comment,
+                created_at: Carbon::parse($date)->setTimeFromTimeString(
                     now()->format('H:i:s')
                 ),
                 quick_replies: $quick_replies,

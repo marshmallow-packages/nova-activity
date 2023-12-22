@@ -32,13 +32,20 @@ class Activity extends Field
             ->activityTitle(__('novaActivity.title'))
             ->fillUsing(function (UpdateResourceRequest $request, Model $resource, $field_name) {
                 $activity_data = json_decode($request->get($field_name), true);
-                collect($activity_data)->each(function ($value, $key) use (&$request) {
+                /**
+                 * We use a prefixer so we don't override attributes from
+                 * other fields in the nova resource. This was introduced
+                 * because we were overriding the "comments" field.
+                 */
+                $key_prefixer = 'nova_activity_entry_data_';
+                collect($activity_data)->each(function ($value, $key) use (&$request, $key_prefixer) {
                     $request->merge([
-                        $key => $value,
+                        $key_prefixer . $key => $value,
                     ]);
                 });
+
                 (new CreateActivityController)
-                    ->storeNewActivity($resource, $request);
+                    ->storeNewActivity($resource, $request, $key_prefixer);
             });
     }
 
