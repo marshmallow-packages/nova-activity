@@ -21,7 +21,7 @@
                     <model-select
                         @change="updateType"
                         class="block w-full form-control form-select form-select-multiple"
-                        :options="comment_types"
+                        :options="field.types"
                         v-model="type"
                         id="type"
                         name="type"
@@ -140,7 +140,6 @@
                 date: "",
                 type: "",
                 quick_reply: "",
-                comment_types: [],
                 filToolsDisplay: "inherit",
             };
         },
@@ -182,13 +181,6 @@
             this.filToolsDisplay = this.field.use_file_uploads
                 ? "inherit"
                 : "none";
-
-            for (const comment_type in this.field.types) {
-                this.comment_types.push({
-                    value: comment_type,
-                    text: this.field.types[comment_type],
-                });
-            }
         },
 
         methods: {

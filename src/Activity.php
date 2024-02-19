@@ -67,6 +67,13 @@ class Activity extends Field
     public function types(callable|array $types): self
     {
         $types = is_array($types) ? $types : $types();
+        $types = collect($types)->map(function ($text, $value) {
+            return [
+                'text' => $text,
+                'value' => $value,
+            ];
+        })->values()->toArray();
+
         return $this->withMeta([
             'types' => $types,
         ]);
