@@ -229,12 +229,15 @@
                     "mentions",
                     JSON.stringify(this.field.mentions)
                 );
-                formData.append(
-                    "type_label",
-                    this.field.types[this.type] === undefined
-                        ? ""
-                        : this.field.types[this.type].text
-                );
+
+                let type_label = '';
+                for (const [key] of Object.entries(this.field.types)) {
+                    if (this.field.types[key].value == this.type) {
+                        type_label = this.field.types[key].text;
+                    }
+                }
+
+                formData.append("type_label", type_label);
                 formData.append("quick_reply", this.quick_reply);
 
                 return Nova.request()
