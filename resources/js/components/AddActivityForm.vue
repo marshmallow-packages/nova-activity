@@ -233,7 +233,7 @@
                     "type_label",
                     this.field.types[this.type] === undefined
                         ? ""
-                        : this.field.types[this.type]
+                        : this.field.types[this.type].text
                 );
                 formData.append("quick_reply", this.quick_reply);
 
