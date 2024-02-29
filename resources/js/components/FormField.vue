@@ -57,6 +57,12 @@
                 );
                 this.setValue("mentions", this.field.mentions);
 
+                let type_value = this.field.types.find(
+                    (type) => type.value === this.current_value.type
+                );
+
+                this.setValue("type_label", type_value.text);
+
                 formData.append(
                     this.fieldAttribute,
                     JSON.stringify(this.current_value)
