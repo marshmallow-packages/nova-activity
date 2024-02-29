@@ -61,7 +61,9 @@
                     (type) => type.value === this.current_value.type
                 );
 
-                this.setValue("type_label", type_value.text);
+                if (type_value){
+                    this.setValue("type_label", type_value.text);
+                }
 
                 formData.append(
                     this.fieldAttribute,
