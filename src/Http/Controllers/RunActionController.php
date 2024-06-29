@@ -10,6 +10,6 @@ class RunActionController
     public function __invoke($activity_id, Request $request)
     {
         $comment = NovaActivity::find($activity_id);
-        $comment->runAction($request->action);
+        $comment?->runAction($request->action);
     }
 }
