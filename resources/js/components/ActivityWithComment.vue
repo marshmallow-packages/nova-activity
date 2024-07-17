@@ -57,10 +57,16 @@
                 v-if="show_comment"
                 class="tw-text-sm tw-leading-6 tw-text-gray-500 dark:tw-text-gray-400"
             >
-                <div
-                    class="tw-mb-4 dark:tw-text-gray-200 tw-prose tw-prose-sm"
-                    v-html="comment.comment"
-                ></div>
+                <div class="tw-mb-4 dark:tw-text-gray-200 tw-prose tw-prose-sm">
+                    <div
+                        v-html="formattedBody"
+                    ></div>
+
+                    <button v-if="comment_longer_than_trancate_value" @click="showing_full_text = !showing_full_text" class="tw-bg-gray-100 tw-rounded tw-px-2 tw-py-0.5 tw-text-xs">
+                        {{ showing_full_text ? __("novaActivity.read_less") : __("novaActivity.read_more") }}
+                    </button>
+                </div>
+
             </div>
             <div class="tw-flex">
                 <QuickReply
@@ -134,12 +140,28 @@
         data() {
             return {
                 show_comment: false,
+                showing_full_text: false,
+                comment_longer_than_trancate_value: false,
             };
+        },
+
+        computed: {
+            formattedBody() {
+                if (this.showing_full_text || !this.field.truncate_comments || !this.comment_longer_than_trancate_value) {
+                    return this.comment.comment;
+                }
+
+                return `${this.comment.comment.slice(0, this.field.truncate_comments).trim()}...`;
+            }
         },
 
         created() {
             this.show_comment =
                 this.comment.is_pinned || this.field.always_show_comments;
+
+            if (this.comment.comment.length > this.field.truncate_comments) {
+                this.comment_longer_than_trancate_value = true;
+            }
         },
 
         methods: {

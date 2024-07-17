@@ -173,6 +173,13 @@ class Activity extends Field
         ]);
     }
 
+    public function truncateComments(int $char_count = 100)
+    {
+        return $this->withMeta([
+            'truncate_comments' => $char_count,
+        ]);
+    }
+
     public function addCurrentUser(): self
     {
         $user = auth()->user();

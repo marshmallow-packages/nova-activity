@@ -14,5 +14,7 @@
     "novaActivity.i_feel_nothing": "I feel nothing",
     "novaActivity.mentions_no_results": "No result",
     "novaActivity.open_index_model": "Open activity",
-    "novaActivity.close_index_model": "Close activity"
+    "novaActivity.close_index_model": "Close activity",
+    "novaActivity.read_more": "Read more",
+    "novaActivity.read_less": "Read less"
 }

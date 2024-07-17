@@ -14,5 +14,7 @@
     "novaActivity.i_feel_nothing": "Verwijder mijn gevoel",
     "novaActivity.mentions_no_results": "Geen resultaten",
     "novaActivity.open_index_model": "Activiteit bekijken",
-    "novaActivity.close_index_model": "Activiteit sluiten"
+    "novaActivity.close_index_model": "Activiteit sluiten",
+    "novaActivity.read_more": "Toon meer",
+    "novaActivity.read_less": "Toon minder"
 }
