@@ -62,7 +62,7 @@
                         v-html="formattedBody"
                     ></div>
 
-                    <button v-if="comment_longer_than_trancate_value" @click="showing_full_text = !showing_full_text" class="tw-bg-gray-100 tw-rounded tw-px-2 tw-py-0.5 tw-text-xs">
+                    <button type="button" v-if="comment_longer_than_trancate_value" @click="showing_full_text = !showing_full_text" class="tw-bg-gray-100 tw-rounded tw-px-2 tw-py-0.5 tw-text-xs">
                         {{ showing_full_text ? __("novaActivity.read_less") : __("novaActivity.read_more") }}
                     </button>
                 </div>
