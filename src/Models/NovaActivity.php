@@ -54,10 +54,6 @@ class NovaActivity extends Model
         return $action();
     }
 
-    //
-
-    // event(new QuickReplyChanged($activity, $request->user()));
-
     public function getOtherQuickReplies()
     {
         $user = auth()->user();

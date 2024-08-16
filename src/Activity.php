@@ -4,6 +4,7 @@ namespace Marshmallow\NovaActivity;
 
 use Laravel\Nova\Fields\Field;
 use Illuminate\Database\Eloquent\Model;
+use Marshmallow\NovaActivity\Models\NovaActivity;
 use Laravel\Nova\Http\Requests\UpdateResourceRequest;
 use Marshmallow\NovaActivity\Http\Controllers\CreateActivityController;
 
@@ -16,6 +17,7 @@ class Activity extends Field
      */
     public $component = 'activity';
 
+    public static $activityModel = NovaActivity::class;
     public static $userModel = \App\Models\User::class;
 
     public function __construct(...$params)

@@ -4,6 +4,7 @@ namespace Marshmallow\NovaActivity\Traits;
 
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
+use Marshmallow\NovaActivity\Activity;
 use Marshmallow\NovaActivity\Models\NovaActivity;
 
 trait NovaActivities
@@ -34,7 +35,7 @@ trait NovaActivities
 
     public function novaActivity()
     {
-        return $this->morphMany(NovaActivity::class, 'nova_activity')
+        return $this->morphMany(Activity::$activityModel, 'nova_activity')
             ->orderBy('is_pinned')
             ->orderBy('created_at');
     }
