@@ -14,18 +14,10 @@
                 >
                     <!-- Placeholder label, show/hide based on listbox state. -->
                     <span v-if="!quick_reply">
-                        <svg
+                        <Icon
+                            name="face-smile"
                             class="tw-h-5 tw-w-5 tw-flex-shrink-0"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true"
-                        >
-                            <path
-                                fill-rule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.536-4.464a.75.75 0 10-1.061-1.061 3.5 3.5 0 01-4.95 0 .75.75 0 00-1.06 1.06 5 5 0 007.07 0zM9 8.5c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S7.448 7 8 7s1 .672 1 1.5zm3 1.5c.552 0 1-.672 1-1.5S12.552 7 12 7s-1 .672-1 1.5.448 1.5 1 1.5z"
-                                clip-rule="evenodd"
-                            />
-                        </svg>
+                        />
                     </span>
                     <span v-if="quick_reply">
                         <span
@@ -43,8 +35,8 @@
                             class="tw-flex tw-items-center tw-justify-center tw-rounded-full"
                         >
                             <Icon
-                                :width="icon_size_class == 'normal' ? 24 : 16"
-                                :type="field.quick_replies[quick_reply].icon"
+                                class="tw-h-4 tw-w-4"
+                                :name="field.quick_replies[quick_reply].icon"
                                 :solid="
                                     field.quick_replies[quick_reply].solid_icon
                                 "
@@ -80,8 +72,8 @@
                             class="tw-flex tw-h-6 tw-w-6 tw-items-center tw-justify-center tw-rounded-full"
                         >
                             <Icon
-                                width="16"
-                                :type="quick_reply.icon"
+                                class="tw-h-4 tw-w-4"
+                                :name="quick_reply.icon"
                                 :solid="quick_reply.solid_icon"
                             />
                         </div>
@@ -97,7 +89,9 @@
     </div>
 </template>
 <script>
+    import { Icon } from "laravel-nova-ui";
     export default {
+        components: { Icon },
         props: ["action", "field", "current_value", "size", "comment_id"],
 
         data: () => ({

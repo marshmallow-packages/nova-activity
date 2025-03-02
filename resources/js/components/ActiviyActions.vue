@@ -10,7 +10,11 @@
                     aria-expanded="true"
                     aria-haspopup="true"
                 >
-                    <Icon :width="16" type="dots-horizontal" :solid="true" />
+                    <Icon
+                        class="tw-h-4 tw-w-4"
+                        name="dots-horizontal"
+                        :solid="true"
+                    />
                 </button>
                 <div
                     :class="{ 'tw-hidden': !show_menu }"
@@ -83,8 +87,12 @@
 </template>
 
 <script>
+    import { Icon } from "laravel-nova-ui";
+
     export default {
         props: ["resourceName", "resourceId", "field", "comment"],
+
+        components: { Icon },
 
         data() {
             return {

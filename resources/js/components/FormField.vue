@@ -61,7 +61,7 @@
                     (type) => type.value === this.current_value.type
                 );
 
-                if (type_value){
+                if (type_value) {
                     this.setValue("type_label", type_value.text);
                 }
 
