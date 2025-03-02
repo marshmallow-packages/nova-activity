@@ -92,9 +92,9 @@
                         </div>
                     </div>
                     <div class="tw-flex-shrink-0">
-                        <DefaultButton @click="submitComment" type="button">
+                        <Button @click="submitComment" type="button">
                             {{ __("novaActivity.post_comment") }}
-                        </DefaultButton>
+                        </Button>
                     </div>
                 </div>
             </div>
@@ -109,6 +109,7 @@
     import { ModelSelect } from "vue-search-select";
     import ActivityHistory from "./ActivityHistory";
     import "vue-search-select/dist/VueSearchSelect.css";
+    import { Icon, Button } from "laravel-nova-ui";
     import { FormField, HandlesValidationErrors } from "laravel-nova";
 
     export default {
@@ -116,7 +117,7 @@
 
         props: ["resourceName", "field", "resourceId"],
 
-        components: { QuickReply, ActivityHistory, ModelSelect },
+        components: { QuickReply, ActivityHistory, ModelSelect, Button },
 
         watch: {
             type: function (new_value, old_value) {
@@ -230,7 +231,7 @@
                     JSON.stringify(this.field.mentions)
                 );
 
-                let type_label = '';
+                let type_label = "";
                 for (const [key] of Object.entries(this.field.types)) {
                     if (this.field.types[key].value == this.type) {
                         type_label = this.field.types[key].text;

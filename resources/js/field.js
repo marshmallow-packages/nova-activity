@@ -1,11 +1,10 @@
-import IndexField from "./components/IndexField";
-import DetailField from "./components/DetailField";
-import FormField from "./components/FormField";
-
-Nova.booting((app, store) => {
-    app.component("index-activity", IndexField);
-    app.component("detail-activity", DetailField);
-    app.component("form-activity", FormField);
+Nova.booting((Vue) => {
+    Vue.component("index-activity", require("./components/IndexField").default);
+    Vue.component(
+        "detail-activity",
+        require("./components/DetailField").default
+    );
+    Vue.component("form-activity", require("./components/FormField").default);
 });
 
 if (

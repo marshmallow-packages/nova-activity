@@ -16,7 +16,11 @@
             v-if="!comment.user.avatar && comment.user.icon"
             class="tw-relative tw-text-center tw-mt-3 tw-h-6 tw-w-6 tw-flex-none tw-rounded-full tw-bg-gray-50"
         >
-            <Icon :width="16" :type="comment.user.icon" :solid="true" />
+            <Icon
+                class="tw-h-4 tw-w-4"
+                :name="comment.user.icon"
+                :solid="true"
+            />
         </div>
         <div
             class="tw-flex-auto tw-mt-3 tw-rounded-md tw-p-3 tw-ring-1 tw-ring-inset tw-ring-gray-200 dark:tw-ring-gray-700 dark:tw-bg-gray-700"
@@ -58,15 +62,21 @@
                 class="tw-text-sm tw-leading-6 tw-text-gray-500 dark:tw-text-gray-400"
             >
                 <div class="tw-mb-4 dark:tw-text-gray-200 tw-prose tw-prose-sm">
-                    <div
-                        v-html="formattedBody"
-                    ></div>
+                    <div v-html="formattedBody"></div>
 
-                    <button type="button" v-if="comment_longer_than_trancate_value" @click="showing_full_text = !showing_full_text" class="tw-bg-gray-100 tw-rounded tw-px-2 tw-py-0.5 tw-text-xs">
-                        {{ showing_full_text ? __("novaActivity.read_less") : __("novaActivity.read_more") }}
+                    <button
+                        type="button"
+                        v-if="comment_longer_than_trancate_value"
+                        @click="showing_full_text = !showing_full_text"
+                        class="tw-bg-gray-100 tw-rounded tw-px-2 tw-py-0.5 tw-text-xs"
+                    >
+                        {{
+                            showing_full_text
+                                ? __("novaActivity.read_less")
+                                : __("novaActivity.read_more")
+                        }}
                     </button>
                 </div>
-
             </div>
             <div class="tw-flex">
                 <QuickReply
@@ -87,7 +97,9 @@
                     size="small"
                 />
                 <div
-                    v-if="field.use_quick_replies && comment.other_quick_replies"
+                    v-if="
+                        field.use_quick_replies && comment.other_quick_replies
+                    "
                     class="tw-flex tw--space-x-1 tw-mt-0 tw-overflow-hidden"
                 >
                     <div
@@ -110,8 +122,8 @@
                             }"
                         >
                             <Icon
-                                :width="12"
-                                :type="
+                                class="tw-h-4 tw-w-4"
+                                :name="
                                     field.quick_replies[other_quick_reply].icon
                                 "
                                 :solid="
@@ -131,11 +143,12 @@
     import QuickReply from "./QuickReply";
     import ActiviyActions from "./ActiviyActions";
     import ActivityStateIcons from "./ActivityStateIcons";
+    import { Icon } from "laravel-nova-ui";
 
     export default {
         props: ["resourceName", "resourceId", "field", "comment", "hidden"],
 
-        components: { QuickReply, ActiviyActions, ActivityStateIcons },
+        components: { QuickReply, ActiviyActions, ActivityStateIcons, Icon },
 
         data() {
             return {
@@ -147,12 +160,16 @@
 
         computed: {
             formattedBody() {
-                if (this.showing_full_text || !this.field.truncate_comments || !this.comment_longer_than_trancate_value) {
+                if (
+                    this.showing_full_text ||
+                    !this.field.truncate_comments ||
+                    !this.comment_longer_than_trancate_value
+                ) {
                     return this.comment.comment;
                 }
 
                 return `${this.comment.comment.slice(0, this.field.truncate_comments).trim()}...`;
-            }
+            },
         },
 
         created() {
