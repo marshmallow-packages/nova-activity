@@ -149,7 +149,7 @@
             dropdown(e) {
                 let el = this.$refs.dropdown;
                 let target = e.target;
-                if (el !== target && !el.contains(target)) {
+                if (el && el !== target && !el.contains(target)) {
                     this.show_menu = false;
                 }
             },

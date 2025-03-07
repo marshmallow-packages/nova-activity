@@ -12,6 +12,7 @@ class GetActivityController
     {
         $resource = Nova::resourceForKey($resourceName);
         $model = $resource::newModel()->findOrFail($resourceId);
+
         return new NovaActivityCollection(
             $model->novaActivity
         );

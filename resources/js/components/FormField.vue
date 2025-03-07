@@ -27,6 +27,13 @@
 
         components: { NovaActivityList },
 
+        created() {
+            let self = this;
+            Nova.$on("novaActivitySetFormFieldValue", function (data) {
+                self.setValue(data.key, data.value);
+            });
+        },
+
         data() {
             return {
                 current_value: {},

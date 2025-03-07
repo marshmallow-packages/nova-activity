@@ -170,10 +170,15 @@
                 tribute.attach(document.getElementById("comment"));
                 var editor = document.getElementById("comment").editor;
                 if (editor != null) {
-                    editor.composition.delegate.inputController.events.keypress =
-                        function () {};
-                    editor.composition.delegate.inputController.events.keydown =
-                        function () {};
+                    if (
+                        editor.composition.delegate.inputController.events !=
+                        null
+                    ) {
+                        editor.composition.delegate.inputController.events.keypress =
+                            function () {};
+                        editor.composition.delegate.inputController.events.keydown =
+                            function () {};
+                    }
                 }
             }
         },
@@ -208,8 +213,11 @@
                 this.quick_reply = quick_reply_key;
             },
 
-            submitChangeToParent(key, valye) {
-                this.$parent.$parent.$parent.setValue(key, valye);
+            submitChangeToParent(key, value) {
+                Nova.$emit("novaActivitySetFormFieldValue", {
+                    key: key,
+                    value: value,
+                });
             },
 
             submitComment() {
