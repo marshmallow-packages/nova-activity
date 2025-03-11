@@ -37,7 +37,7 @@
                 >
                     <Trix
                         v-if="field.use_comments"
-                        id="comment"
+                        :id="`${random_id}`"
                         name="comment"
                         :value="comment"
                         @file-added="handleFileAdded"
@@ -46,14 +46,6 @@
                         :placeholder="__('novaActivity.comment_placeholder')"
                         class="tw-block tw-ml-px tw-pl-2 tw-w-[99%] mx-auto tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 placeholder:tw-text-gray-400 dark:text-gray-400 sm:tw-text-sm sm:tw-leading-6 focus:tw-outline-none"
                     />
-                    <!-- <trix-editor
-                        v-if="field.use_comments"
-
-                        name="comment"
-                        id="comment"
-                        class="tw-block tw-ml-px tw-pl-2 tw-w-[99%] mx-auto tw-resize-none tw-border-0 tw-outline-none tw-bg-transparent tw-py-1.5 tw-text-gray-900 placeholder:tw-text-gray-400 dark:text-gray-400 sm:tw-text-sm sm:tw-leading-6"
-                        :placeholder="__('novaActivity.comment_placeholder')"
-                    ></trix-editor> -->
 
                     <div class="tw-py-2" aria-hidden="true">
                         <div class="tw-py-px">
@@ -138,6 +130,7 @@
 
         data() {
             return {
+                random_id: "",
                 date: "",
                 type: "",
                 quick_reply: "",
@@ -146,6 +139,9 @@
         },
 
         mounted() {
+            this.random_id =
+                "activity_id_" + Math.random().toString(36).substring(7);
+
             if (this.field.mentions) {
                 var tribute = new Tribute({
                     values: this.field.mentions,
@@ -167,8 +163,8 @@
                         );
                     },
                 });
-                tribute.attach(document.getElementById("comment"));
-                var editor = document.getElementById("comment").editor;
+                tribute.attach(document.getElementById(this.random_id));
+                var editor = document.getElementById(this.random_id).editor;
                 if (editor != null) {
                     if (
                         editor.composition.delegate.inputController.events !=
@@ -230,7 +226,7 @@
                 formData.append(
                     "comment",
                     this.field.use_comments
-                        ? document.getElementById("comment").value
+                        ? document.getElementById(this.random_id).value
                         : ""
                 );
                 formData.append("type", this.type);
@@ -283,7 +279,7 @@
                 this.date = this.moment(new Date()).format("YYYY-MM-DD");
 
                 if (this.field.use_comments) {
-                    document.getElementById("comment").editor.loadHTML("");
+                    document.getElementById(this.random_id).editor.loadHTML("");
                 }
             },
         },
