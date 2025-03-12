@@ -18,6 +18,7 @@
                 :field="field"
                 :limit="field.limit_on_detail"
                 :resourceId="resourceId"
+                :commentFieldId="commentFieldId"
             />
         </div>
     </div>
@@ -28,5 +29,14 @@
     export default {
         props: ["index", "resource", "resourceName", "resourceId", "field"],
         components: { NovaActivityList },
+        data() {
+            return {
+                commentFieldId: null,
+            };
+        },
+        created: function () {
+            this.commentFieldId =
+                "activity_id_" + Math.random().toString(36).substring(7);
+        },
     };
 </script>

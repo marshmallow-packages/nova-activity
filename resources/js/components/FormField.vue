@@ -11,6 +11,7 @@
                 :field="field"
                 :limit="field.limit_on_forms"
                 :resourceId="resourceId"
+                :commentFieldId="commentFieldId"
             />
         </template>
     </DefaultField>
@@ -29,6 +30,8 @@
 
         created() {
             let self = this;
+            this.commentFieldId =
+                "activity_id_" + Math.random().toString(36).substring(7);
             Nova.$on("novaActivitySetFormFieldValue", function (data) {
                 self.setValue(data.key, data.value);
             });
@@ -37,6 +40,7 @@
         data() {
             return {
                 current_value: {},
+                commentFieldId: null,
             };
         },
 
@@ -59,7 +63,7 @@
                 this.setValue(
                     "comment",
                     this.field.use_comments
-                        ? document.getElementById("comment").value
+                        ? document.getElementById(this.commentFieldId).value
                         : ""
                 );
                 this.setValue("mentions", this.field.mentions);
