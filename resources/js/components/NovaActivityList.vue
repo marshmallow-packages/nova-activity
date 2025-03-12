@@ -9,6 +9,7 @@
         />
         <AddActivityForm
             :field="field"
+            :commentFieldId="commentFieldId"
             :resourceName="resourceName"
             :resourceId="resourceId"
         />
@@ -23,12 +24,15 @@
     export default {
         mixins: [FormField, HandlesValidationErrors],
 
-        props: ["resourceName", "field", "resourceId", "limit"],
+        props: [
+            "resourceName",
+            "field",
+            "resourceId",
+            "limit",
+            "commentFieldId",
+        ],
 
         components: { ActivityHistory, AddActivityForm },
-
-        data() {},
-        created() {},
 
         methods: {
             /*

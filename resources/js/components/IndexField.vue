@@ -23,6 +23,7 @@
                             :field="field"
                             :limit="field.limit_on_index"
                             :resourceId="resource.id.value"
+                            :commentFieldId="commentFieldId"
                         />
                     </div>
                 </div>
@@ -54,10 +55,12 @@
         data() {
             return {
                 show: false,
+                commentFieldId: null,
             };
         },
         created: function () {
-            console.log(this.field.name);
+            this.commentFieldId =
+                "activity_id_" + Math.random().toString(36).substring(7);
         },
         methods: {
             closeModel() {

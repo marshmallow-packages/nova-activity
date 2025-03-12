@@ -37,7 +37,7 @@
                 >
                     <Trix
                         v-if="field.use_comments"
-                        :id="`${random_id}`"
+                        :id="`${commentFieldId}`"
                         name="comment"
                         :value="comment"
                         @file-added="handleFileAdded"
@@ -107,7 +107,7 @@
     export default {
         mixins: [FormField, HandlesValidationErrors],
 
-        props: ["resourceName", "field", "resourceId"],
+        props: ["resourceName", "field", "resourceId", "commentFieldId"],
 
         components: { QuickReply, ActivityHistory, ModelSelect, Button },
 
@@ -130,7 +130,6 @@
 
         data() {
             return {
-                random_id: "",
                 date: "",
                 type: "",
                 quick_reply: "",
@@ -139,9 +138,6 @@
         },
 
         mounted() {
-            this.random_id =
-                "activity_id_" + Math.random().toString(36).substring(7);
-
             if (this.field.mentions) {
                 var tribute = new Tribute({
                     values: this.field.mentions,
@@ -163,8 +159,10 @@
                         );
                     },
                 });
-                tribute.attach(document.getElementById(this.random_id));
-                var editor = document.getElementById(this.random_id).editor;
+                tribute.attach(document.getElementById(this.commentFieldId));
+                var editor = document.getElementById(
+                    this.commentFieldId
+                ).editor;
                 if (editor != null) {
                     if (
                         editor.composition.delegate.inputController.events !=
@@ -226,7 +224,7 @@
                 formData.append(
                     "comment",
                     this.field.use_comments
-                        ? document.getElementById(this.random_id).value
+                        ? document.getElementById(this.commentFieldId).value
                         : ""
                 );
                 formData.append("type", this.type);
@@ -279,7 +277,9 @@
                 this.date = this.moment(new Date()).format("YYYY-MM-DD");
 
                 if (this.field.use_comments) {
-                    document.getElementById(this.random_id).editor.loadHTML("");
+                    document
+                        .getElementById(this.commentFieldId)
+                        .editor.loadHTML("");
                 }
             },
         },
