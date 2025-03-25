@@ -1,12 +1,12 @@
 <template>
-    <span>
+    <div>
         <ActivityTag
             v-for="tag in comment.meta.tags"
             v-bind:key="tag.key"
             :tag="tag"
             :field="field"
         />
-    </span>
+    </div>
 </template>
 
 <script>

@@ -229,8 +229,9 @@ public static $clickAction = 'ignore';
 ```php
 ->actions([
     ToggleTagAction::make(__('Important'), 'important')
-        ->color('#ffffff')
-        ->background('red')
+        ->color('red')
+        ->backgroundColor('#ffffff')
+        ->borderColor('red')
         ->icon('fire'),
 ])
 ```
