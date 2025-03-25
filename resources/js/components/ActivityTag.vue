@@ -1,7 +1,11 @@
 <template>
     <span
         class="tag"
-        :style="{ backgroundColor: backgroundColor, color: color }"
+        :style="{
+            backgroundColor: backgroundColor,
+            color: color,
+            borderColor: color,
+        }"
     >
         <Icon v-if="icon" :name="icon" type="micro" />
         <span>{{ name }}</span>
@@ -48,16 +52,17 @@
 </script>
 <style>
     .tag {
-        display: inline-flex;
         align-items: center;
-        gap: 0.25rem;
-        padding: 0.25rem 0.5rem;
-        margin-right: 0.5rem;
-        margin-bottom: 0.5rem;
         border-radius: 0.25rem;
-        font-size: 0.65rem;
+        display: inline-flex;
+        font-size: 0.6rem;
         font-weight: 600;
+        gap: 0.25rem;
         line-height: 1;
+        margin-bottom: 0.5rem;
+        margin-right: 0.5rem;
+        padding: 0.1rem 0.2rem;
         text-transform: uppercase;
+        border: 1px solid;
     }
 </style>

@@ -8,8 +8,9 @@ use Marshmallow\NovaActivity\Models\NovaActivity;
 class ToggleTagAction
 {
     protected $icon;
-    protected $color = '#fff';
-    protected $background_color = 'red';
+    protected $color = 'red';
+    protected $background_color = '#fff';
+    protected $border_color = 'red';
 
     public static function make(string $name, string $key): self
     {
@@ -27,9 +28,15 @@ class ToggleTagAction
         return $this;
     }
 
-    public function background(string $background): self
+    public function backgroundColor(string $background): self
     {
         $this->background_color = $background;
+        return $this;
+    }
+
+    public function borderColor(string $border): self
+    {
+        $this->border_color = $border;
         return $this;
     }
 
