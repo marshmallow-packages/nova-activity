@@ -21,9 +21,10 @@
                 <ActivityStateIcons :comment="comment" />
                 <div>
                     {{ comment.user.name }}
-                    <span class="tw-text-gray-500 dark:text-gray-400">{{
-                        comment.type.label
-                    }}</span>
+                    <span class="tw-text-gray-500 dark:text-gray-400">
+                        {{ comment.type.label }}
+                    </span>
+                    <ActivityTags :field="field" :comment="comment" />
                 </div>
             </div>
         </div>
@@ -37,16 +38,18 @@
                 {{ comment.created_at }}
             </span>
         </time>
-        <ActiviyActions :comment="comment" />
+        <ActiviyActions :comment="comment" :field="field" />
     </li>
 </template>
 
 <script>
     import ActiviyActions from "./ActiviyActions";
     import ActivityStateIcons from "./ActivityStateIcons";
+    import ActivityTags from "./ActivityTags";
+
     export default {
         props: ["resourceName", "resourceId", "field", "comment", "hidden"],
 
-        components: { ActiviyActions, ActivityStateIcons },
+        components: { ActiviyActions, ActivityStateIcons, ActivityTags },
     };
 </script>

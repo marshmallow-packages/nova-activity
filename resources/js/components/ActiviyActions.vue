@@ -79,6 +79,21 @@
                         >
                             {{ __("novaActivity.delete_activity") }}
                         </a>
+
+                        <template
+                            v-for="action in field.actions"
+                            v-bind:key="action.key"
+                        >
+                            <a
+                                @click="runCustomAction(action.key)"
+                                href="javascript:;"
+                                class="tw-text-gray-700 tw-block tw-px-4 tw-py-2 tw-text-sm hover:tw-bg-gray-100 hover:tw-text-gray-900 dark:text-gray-400"
+                                role="menuitem"
+                                tabindex="-1"
+                            >
+                                {{ action.name }}
+                            </a>
+                        </template>
                     </div>
                 </div>
             </div>
@@ -108,6 +123,30 @@
         },
 
         methods: {
+            runCustomAction(action_key) {
+                let action = this.field.actions.find(
+                    (a) => a.key === action_key
+                );
+
+                this.show_menu = false;
+                let self = this;
+                let formData = new FormData();
+                formData.append("action", JSON.stringify(action));
+
+                Nova.request()
+                    .post(
+                        `/nova-vendor/nova-activity/${this.comment.id}/run-custom-action`,
+                        formData
+                    )
+                    .then(
+                        (response) => {
+                            self.$parent.$parent.loadCommentHistory();
+                        },
+                        (response) => {
+                            Nova.error(response);
+                        }
+                    );
+            },
             pinComment() {
                 this.runAction("pin");
             },

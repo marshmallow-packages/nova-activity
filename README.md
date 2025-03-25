@@ -225,3 +225,12 @@ public static $clickAction = 'ignore';
 ->useQuickReplies(true)
 ->useFileUploads(true)
 ```
+
+```php
+->actions([
+    ToggleTagAction::make(__('Important'), 'important')
+        ->color('#ffffff')
+        ->background('red')
+        ->icon('fire'),
+])
+```

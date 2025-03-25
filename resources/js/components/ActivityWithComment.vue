@@ -38,8 +38,10 @@
                             {{ comment.user.name }}
                             <span
                                 class="tw-text-gray-500 dark:tw-text-gray-400"
-                                >{{ comment.type.label }}</span
                             >
+                                {{ comment.type.label }}
+                            </span>
+                            <ActivityTags :field="field" :comment="comment" />
                         </div>
                     </div>
                 </div>
@@ -54,7 +56,7 @@
                             {{ comment.created_at }}
                         </span>
                     </time>
-                    <ActiviyActions :comment="comment" />
+                    <ActiviyActions :comment="comment" :field="field" />
                 </div>
             </div>
             <div
@@ -143,12 +145,19 @@
     import QuickReply from "./QuickReply";
     import ActiviyActions from "./ActiviyActions";
     import ActivityStateIcons from "./ActivityStateIcons";
+    import ActivityTags from "./ActivityTags";
     import { Icon } from "laravel-nova-ui";
 
     export default {
         props: ["resourceName", "resourceId", "field", "comment", "hidden"],
 
-        components: { QuickReply, ActiviyActions, ActivityStateIcons, Icon },
+        components: {
+            QuickReply,
+            ActiviyActions,
+            ActivityStateIcons,
+            ActivityTags,
+            Icon,
+        },
 
         data() {
             return {

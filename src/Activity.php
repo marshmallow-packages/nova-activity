@@ -66,6 +66,19 @@ class Activity extends Field
         ]);
     }
 
+    public function actions(callable|array $actions): self
+    {
+        $actions = is_array($actions) ? $actions : $actions();
+        $actions = collect($actions)
+            ->map(function ($action) {
+                return $action->toArray();
+            })->values()->toArray();
+
+        return $this->withMeta([
+            'actions' => $actions,
+        ]);
+    }
+
     public function types(callable|array $types): self
     {
         $types = is_array($types) ? $types : $types();
