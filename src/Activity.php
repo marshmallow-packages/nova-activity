@@ -214,7 +214,7 @@ class Activity extends Field
         ]);
     }
 
-    public static function getUserAvatar($user = null): string
+    public static function getUserAvatar(mixed $user = null): string
     {
         if (!$user) {
             return '';
