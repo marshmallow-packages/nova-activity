@@ -10,11 +10,11 @@ use Marshmallow\NovaActivity\Models\NovaActivity;
 trait NovaActivities
 {
     public function addActivity(
-        int $user_id = null,
-        int|string $type = null,
-        int|string|array $label = null,
-        string $comment = null,
-        Carbon $created_at = null,
+        ?int $user_id = null,
+        int|string|null $type = null,
+        int|string|array|null $label = null,
+        ?string $comment = null,
+        ?Carbon $created_at = null,
         array $quick_replies = [],
         array $mentions = [],
     ): NovaActivity {
