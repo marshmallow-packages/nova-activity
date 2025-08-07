@@ -31,27 +31,28 @@ class NovaActivity extends Model
         $action = match ($action) {
             'pin' => function () {
                 $this->update(['is_pinned' => true]);
-                event(new ActivityPinned($this, auth()?->user()));
+                event(new ActivityPinned($this, auth()->user()));
             },
             'unpin' => function () {
                 $this->update(['is_pinned' => false]);
-                event(new ActivityUnpinned($this, auth()?->user()));
+                event(new ActivityUnpinned($this, auth()->user()));
             },
             'hide' => function () {
                 $this->update(['is_hidden' => true]);
-                event(new ActivityCommentHidden($this, auth()?->user()));
+                event(new ActivityCommentHidden($this, auth()->user()));
             },
             'show' => function () {
                 $this->update(['is_hidden' => false]);
-                event(new ActivityCommentShow($this, auth()?->user()));
+                event(new ActivityCommentShow($this, auth()->user()));
             },
             'delete' => function () {
                 $this->delete();
-                event(new ActivityDeleted($this, auth()?->user()));
+                event(new ActivityDeleted($this, auth()->user()));
             },
+            default => throw new \InvalidArgumentException("Unknown action: {$action}"),
         };
 
-        return $action();
+        $action();
     }
 
     public function getOtherQuickReplies()

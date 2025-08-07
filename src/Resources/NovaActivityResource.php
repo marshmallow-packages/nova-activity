@@ -19,8 +19,8 @@ class NovaActivityResource extends JsonResource
         return [
             'id' => $this->id,
             'user' => [
-                'id' => $this->user?->id ?? null,
-                'name' => $this->user?->name ?? __('System'),
+                'id' => $this->user->id ?? null,
+                'name' => $this->user->name ?? __('System'),
                 'avatar' => Activity::getUserAvatar($this->user),
                 'icon' => $this->user ? null : 'desktop-computer',
             ],

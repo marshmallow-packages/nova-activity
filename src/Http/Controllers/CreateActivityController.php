@@ -31,7 +31,7 @@ class CreateActivityController
                 }
             }
 
-            if ($comment_validation && !empty($comment_validation)) {
+            if ($comment_validation) {
                 $request->validate($comment_validation);
             }
 
