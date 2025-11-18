@@ -14,7 +14,7 @@ class GetActivityController
         $model = $resource::newModel()->findOrFail($resourceId);
 
         return new NovaActivityCollection(
-            $model->novaActivity
+            $model->novaActivity()->with('user')->get()
         );
     }
 }
