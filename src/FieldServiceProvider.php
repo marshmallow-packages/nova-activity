@@ -40,7 +40,7 @@ class FieldServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../resources/lang' => $this->app->langPath('vendor/nova-activity'),
-        ], 'nova-activiy-translations');
+        ], 'nova-activity-translations');
     }
 
     /**
