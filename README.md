@@ -11,7 +11,7 @@ php artisan vendor:publish --tag="nova-activity-migrations"
 ```
 
 ```bash
-php artisan vendor:publish --tag="nova-activiy-translations"
+php artisan vendor:publish --tag="nova-activity-translations"
 ```
 
 ```php
