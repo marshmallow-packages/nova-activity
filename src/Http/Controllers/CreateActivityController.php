@@ -15,7 +15,9 @@ class CreateActivityController
     public function __invoke($resourceName, $resourceId, Request $request)
     {
         $resource = Nova::resourceForKey($resourceName);
-        $model = $resource::newModel()->findOrFail($resourceId);
+        // Nova resolves detail/edit models without global scopes, so scoped
+        // models (domain or state scopes) would 404 here if we kept them applied.
+        $model = $resource::newModel()->newQueryWithoutScopes()->findOrFail($resourceId);
         return $this->storeNewActivity($model, $request);
     }
 
